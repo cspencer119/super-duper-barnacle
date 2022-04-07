@@ -315,6 +315,14 @@
       <Project>{D91E4B16-2A26-47AF-BA2B-E98DAC277544}</Project>
       <Name>Spongebob.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Spongebob.Models\Spongebob.Models.csproj">
+      <Project>{5155F8AD-4DA3-409C-BFA0-E0BDC1D4316C}</Project>
+      <Name>Spongebob.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Spongebob.Service\Spongebob.Service.csproj">
+      <Project>{9C45EE08-AB24-404E-B4F7-996069F30DC4}</Project>
+      <Name>Spongebob.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
