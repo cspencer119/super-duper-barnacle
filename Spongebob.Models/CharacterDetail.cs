@@ -19,7 +19,7 @@ namespace Spongebob.Models
         [Display(Name = "Character Job")]
         public string CharacterJob { get; set; }
         [Display(Name = "Character Place")]
-        public Place Place { get; set; }
+        public Place CharacterPlace { get; set; }
         [Display(Name = "Character Item")]
         public ICollection<Inventory> Inventory { get; set; }
     }

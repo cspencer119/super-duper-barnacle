@@ -36,5 +36,71 @@ namespace Spongebob.Service
                 return ctx.SaveChanges() == 1;
             }
         }
+        public IEnumerable<CharacterListItem> GetCharacters()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Characters.Select(e => new CharacterListItem
+                    {
+                        CharacterId = e.CharacterId,
+                        CharacterName = e.CharacterName
+                    });
+                return query.ToArray();
+            }
+        }
+
+        public CharacterDetail GetCharacterById(int characterID)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Characters.Single(e => e.CharacterId == characterID);
+                return
+                    new CharacterDetail
+                    {
+                        CharacterId = entity.CharacterId,
+                        CharacterName = entity.CharacterName,
+                        CharacterDescription = entity.CharacterDescription,
+                        CharacterJob = entity.CharacterJob,
+                        CharacterPlace = entity.Place,
+                        Inventory = entity.Inventory
+                    };
+            }
+        }
+
+        public bool UpdateCharacter(CharacterEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Characters.Single(e => e.CharacterId == model.CharacterId);
+                entity.CharacterName = model.CharacterName;
+                entity.CharacterDescription = model.CharacterDescription;
+                entity.CharacterJob = model.CharacterJob;
+                entity.Place = model.Place;
+                entity.Inventory = model.Items;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteCharacter(int characterID)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Characters
+                    .Single(e => e.CharacterId == characterID);
+
+                ctx.Characters.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
      }
 }
