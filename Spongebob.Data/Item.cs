@@ -13,6 +13,9 @@ namespace Spongebob.Data
         public int ItemId { get; set; }
 
         [Required]
+        public Guid UserId { get; set; }
+
+        [Required]
         public string ItemName { get; set; }
 
         [Required]

@@ -36,7 +36,7 @@ namespace Spongebob.Service
                 return ctx.SaveChanges() == 1;
             }
         }
-        public IEnumerable<CharacterListItem> GetCharacters()
+        public IEnumerable<CharacterListItem> GetCharacter()
         {
             using (var ctx = new ApplicationDbContext())
             {
