@@ -11,18 +11,18 @@ namespace Spongebob.Data
     public class Character
     {
         [Key]
-        public int characterId { get; set; }
+        public int CharacterId { get; set; }
         [Required]
         public Guid UserId { get; set; }
         [Required]
-        public string characterName { get; set; }
+        public string CharacterName { get; set; }
         [Required]
-        public string characterDescription { get; set; }
+        public string CharacterDescription { get; set; }
         [Required]
-        public string characterJob { get; set; }
+        public string CharacterJob { get; set; }
 
         [ForeignKey(nameof(Place))]
-        public int character_placeId { get; set; }
+        public int Character_PlaceId { get; set; }
         public virtual Place Place { get; set; }
 
         public List<Inventory> Inventory { get; set; }
