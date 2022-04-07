@@ -35,11 +35,11 @@ namespace Spongebob.Data
         {
             return new ApplicationDbContext();
         }
-<<<<<<< HEAD
+
         public DbSet<Place> Places { get; set; }
 
 
-=======
+
         public DbSet<Character> Characters { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -68,7 +68,7 @@ namespace Spongebob.Data
                 HasKey(iur => iur.UserId);
             }
         }
->>>>>>> e0ea4e9e42db9819525954beca0125fb6229cde3
+
 
     }
 }

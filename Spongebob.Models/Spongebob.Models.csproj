@@ -62,6 +62,10 @@
     <Compile Include="ItemDetail.cs" />
     <Compile Include="ItemEdit.cs" />
     <Compile Include="ItemListItem.cs" />
+    <Compile Include="PlaceCreate.cs" />
+    <Compile Include="PlaceDetail.cs" />
+    <Compile Include="PlaceEdit.cs" />
+    <Compile Include="PlaceListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
