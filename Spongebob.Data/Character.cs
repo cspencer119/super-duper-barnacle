@@ -24,7 +24,8 @@ namespace Spongebob.Data
         [ForeignKey(nameof(Place))]
         public int character_placeId { get; set; }
         public virtual Place Place { get; set; }
-        
+
+        public List<Inventory> Inventory { get; set; }
 
         //strech ListJunk items (virtual property)
     }
