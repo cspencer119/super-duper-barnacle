@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Spongebob.Data;
+using Spongebob.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,4 +11,6 @@ namespace Spongebob.Service
     public class CharacterService
     {
     }
+
+
 }
