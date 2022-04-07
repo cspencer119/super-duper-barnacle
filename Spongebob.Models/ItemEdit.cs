@@ -8,9 +8,9 @@ namespace Spongebob.Models
 {
     public class ItemEdit
     {
-        public string itemName { get; set; }
-        public string itemDescription { get; set; }
-        public bool itemIsCool { get; set; }
+        public string ItemName { get; set; }
+        public string ItemDescription { get; set; }
+        public bool ItemIsCool { get; set; }
 
     }
 }

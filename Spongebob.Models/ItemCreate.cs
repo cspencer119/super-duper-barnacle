@@ -11,14 +11,14 @@ namespace Spongebob.Models
     {
         [Required]
         [MaxLength(50)]
-        public string itemName { get; set; }
+        public string ItemName { get; set; }
 
         [Required]
         [MaxLength(250)]
-        public string itemDescription { get; set; }
+        public string ItemDescription { get; set; }
 
         [Required]
-        public bool itemIsCool { get; set; }
+        public bool ItemIsCool { get; set; }
 
     }
 }

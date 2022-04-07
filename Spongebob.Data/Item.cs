@@ -10,16 +10,16 @@ namespace Spongebob.Data
     public class Item
     {
         [Key]
-        public int itemId { get; set; }
+        public int ItemId { get; set; }
 
         [Required]
-        public string itemName { get; set; }
+        public string ItemName { get; set; }
 
         [Required]
-        public string itemDescription { get; set; }
+        public string ItemDescription { get; set; }
 
         [Required]
-        public bool itemIsCool { get; set; }
+        public bool ItemIsCool { get; set; }
 
     }
 }
