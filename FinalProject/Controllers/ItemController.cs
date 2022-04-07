@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Spongebob.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -28,7 +29,7 @@ namespace FinalProject.Controllers
             return Ok();
         }
 
-        public IHttpActionResult Edit(items)
+        public IHttpActionResult Edit(ItemEdit items)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
