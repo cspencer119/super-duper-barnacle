@@ -32,7 +32,5 @@ namespace Spongebob.Data
         }
         public DbSet<Place> Places { get; set; }
 
-
-
     }
 }
