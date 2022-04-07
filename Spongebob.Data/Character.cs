@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,9 +22,10 @@ namespace Spongebob.Data
         public string characterJob { get; set; }
 
         [ForeignKey(nameof(Place))]
-        Place place
-        int characterPlaceId
+        public int character_placeId { get; set; }
+        public virtual Place place { get; set; }
+        
 
-//strech ListJunk items (virtual property)
+        //strech ListJunk items (virtual property)
     }
 }
