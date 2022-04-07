@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Spongebob.Models
 {
-    internal class ItemDetail
+    public class ItemDetail
     {
+        public int itemId { get; set; }
+        public string itemName { get; set; }
+        public string itemDescription { get; set; }
+        public bool itemIsCool { get; set; }
     }
 }
