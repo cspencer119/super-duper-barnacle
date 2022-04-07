@@ -10,6 +10,9 @@ namespace Spongebob.Models
     public class ItemCreate
     {
         [Required]
+        public int ItemId { get; set; }
+
+        [Required]
         [MaxLength(50)]
         public string ItemName { get; set; }
 
