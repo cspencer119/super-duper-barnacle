@@ -58,6 +58,10 @@
     <Compile Include="CharacterDetail.cs" />
     <Compile Include="CharacterEdit.cs" />
     <Compile Include="CharacterListItem.cs" />
+    <Compile Include="ItemCreate.cs" />
+    <Compile Include="ItemDetail.cs" />
+    <Compile Include="ItemEdit.cs" />
+    <Compile Include="ItemListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
