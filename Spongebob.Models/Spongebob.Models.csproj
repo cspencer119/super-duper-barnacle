@@ -72,5 +72,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Spongebob.Data\Spongebob.Data.csproj">
+      <Project>{D91E4B16-2A26-47AF-BA2B-E98DAC277544}</Project>
+      <Name>Spongebob.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
