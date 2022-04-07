@@ -1,4 +1,6 @@
-﻿using Spongebob.Models;
+﻿using Microsoft.AspNet.Identity;
+using Spongebob.Models;
+using Spongebob.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,10 +47,17 @@ namespace FinalProject.Controllers
         {
             var service = CreateItemService();
 
-            if (!service.DeleteItems(id))
+            if (!service.DeleteItem(id))
                 return InternalServerError();
 
             return Ok();
+        }
+
+        private ItemService CreateItemService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var itemService = new ItemService(userId);
+            return itemService;
         }
     }
 }
