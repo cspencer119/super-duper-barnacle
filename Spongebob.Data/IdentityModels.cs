@@ -36,17 +36,7 @@ namespace Spongebob.Data
         }
 
         public DbSet<Item> Items { get; set; }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder
-                .Conventions
-                .Remove<PluralizingTableNameConvention>();
-
-            modelBuilder
-                .Configurations
-                .Add(new IdentityUserLoginConfiguration())
-                .Add(new IdentityUserRoleConfiguration());
-        }
+        
 
         public DbSet<Place> Places { get; set; }
         
