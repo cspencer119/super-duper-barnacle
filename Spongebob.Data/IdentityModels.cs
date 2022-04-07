@@ -1,4 +1,9 @@
 ﻿using System.Data.Entity;
+<<<<<<< HEAD
+=======
+using System.Data.Entity.ModelConfiguration;
+using System.Data.Entity.ModelConfiguration.Conventions;
+>>>>>>> e0ea4e9e42db9819525954beca0125fb6229cde3
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -30,9 +35,40 @@ namespace Spongebob.Data
         {
             return new ApplicationDbContext();
         }
+<<<<<<< HEAD
         public DbSet<Place> Places { get; set; }
 
 
+=======
+        public DbSet<Character> Characters { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder
+                .Conventions
+                .Remove<PluralizingTableNameConvention>();
+
+            modelBuilder
+                .Configurations
+                .Add(new IdentityUserLoginConfiguration())
+                .Add(new IdentityUserRoleConfiguration());
+        }
+        public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
+        {
+            public IdentityUserLoginConfiguration()
+            {
+                HasKey(iul => iul.UserId);
+            }
+
+        }
+
+        public class IdentityUserRoleConfiguration : EntityTypeConfiguration<IdentityUserRole>
+        {
+            public IdentityUserRoleConfiguration()
+            {
+                HasKey(iur => iur.UserId);
+            }
+        }
+>>>>>>> e0ea4e9e42db9819525954beca0125fb6229cde3
 
     }
 }
