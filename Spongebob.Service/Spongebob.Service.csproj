@@ -55,11 +55,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CharacterService.cs" />
+    <Compile Include="PlaceService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Spongebob.Data\Spongebob.Data.csproj">
+      <Project>{D91E4B16-2A26-47AF-BA2B-E98DAC277544}</Project>
+      <Name>Spongebob.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Spongebob.Models\Spongebob.Models.csproj">
+      <Project>{5155F8AD-4DA3-409C-BFA0-E0BDC1D4316C}</Project>
+      <Name>Spongebob.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
