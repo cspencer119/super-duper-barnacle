@@ -12,9 +12,6 @@ using System.Web.Http.Filters;
 
 namespace FinalProject
 {
-    /// <summary>
-    /// Document filter for adding Authorization header in Swashbuckle/Swagger.
-    /// </summary>
     public class AddAuthorizationHeaderParameterOperationFilter : IOperationFilter
     {
         public void Apply(Operation operation, SchemaRegistry schemaRegistry, ApiDescriptionExtensions apiDescription)
@@ -23,13 +20,9 @@ namespace FinalProject
             var isAuthorized = filterPipeline
                 .Select(filterInfo => filterInfo.Instance)
                 .Any(filter => filter is IAuthorizationFilter);
-
             var allowAnonymous = apiDescription.ActionDescriptor.GetCustomAttributes<AllowAnonymousAttribute>().Any();
-
             if (!isAuthorized || allowAnonymous) return;
-
             if (operation.parameters == null) operation.parameters = new List<Parameter>();
-
             operation.parameters.Add(new Parameter
             {
                 name = "Authorization",
@@ -40,12 +33,10 @@ namespace FinalProject
             });
         }
     }
-
     ///<summary>
     ///Document filter for adding OAuth Token endpoint documentation in Swashbuckle / Swagger.
     ///Swagger normally won't find it - the /token endpoint - due to it being programmatically generated.
     ///</summary>
-    
     class AuthTokenEndpointOperation : IDocumentFilter
     {
         public void Apply(SwaggerDocument swaggerDoc, SchemaRegistry schemaRegistry, IApiExplorer apiExplorer)
@@ -85,30 +76,24 @@ namespace FinalProject
                     }
                 }
             });
-
         }
     }
-
     public class SwaggerConfig
     {
         public static void Register()
         {
             var thisAssembly = typeof(SwaggerConfig).Assembly;
-
             GlobalConfiguration.Configuration
                 .EnableSwagger(c =>
                 {
                     c.SingleApiVersion("v1", "FinalProject.WebAPI");
-
                     c.OperationFilter(() => new AddAuthorizationHeaderParameterOperationFilter());
-
                     c.DocumentFilter<AuthTokenEndpointOperation>();
-
                 })
                 .EnableSwaggerUi(c =>
                 {
-
                 });
         }
     }
 }
+
