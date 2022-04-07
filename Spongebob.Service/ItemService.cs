@@ -75,7 +75,7 @@ namespace Spongebob.Service
             }
         }
 
-        public bool UpdateItem(ItemEdit model)
+        public bool EditItem(ItemEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
