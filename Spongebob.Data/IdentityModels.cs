@@ -36,7 +36,8 @@ namespace Spongebob.Data
         }
 
         public DbSet<Place> Places { get; set; }
-
+        
+        public DbSet<Inventory> Inventories { get; set; }
 
 
         public DbSet<Character> Characters { get; set; }
