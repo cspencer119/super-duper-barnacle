@@ -21,7 +21,7 @@ namespace Spongebob.Service
             var entity =
                 new Item()
                 {
-                    ItemId = model.ItemId,
+                    UserId = _userId,
                     ItemName = model.ItemName,
                     ItemDescription = model.ItemDescription,
                     ItemIsCool = model.ItemIsCool
@@ -41,10 +41,10 @@ namespace Spongebob.Service
                 var query =
                     ctx
                     .Items
-                    .Where(e => e.ItemId == ItemId)
+                    .Where(e => e.UserId == _userId)
                     .Select(
                         e =>
-                        new ItemListItem(ItemListItem)
+                        new ItemListItem()
                         {
                             ItemId = e.ItemId,
                             ItemName = e.ItemName,
@@ -86,13 +86,13 @@ namespace Spongebob.Service
 
                 entity.ItemName = model.ItemName;
                 entity.ItemDescription = model.ItemDescription;
-                entity.IsItemCool = model.ItemIsCool;
+                entity.ItemIsCool = model.ItemIsCool;
 
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public bool DeleteNote(int itemId)
+        public bool DeleteItem(int itemId)
         {
             using (var ctx = new ApplicationDbContext())
             {
