@@ -1,9 +1,8 @@
 ﻿using System.Data.Entity;
-<<<<<<< HEAD
-=======
+
 using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
->>>>>>> e0ea4e9e42db9819525954beca0125fb6229cde3
+
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
