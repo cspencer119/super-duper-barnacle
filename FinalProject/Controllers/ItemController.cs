@@ -14,29 +14,37 @@ namespace FinalProject.Controllers
     {
         public IHttpActionResult Get()
         {
-            var cService = CreateItemService();
-            var items = cService.GetItems();
+            var iService = CreateItemService();
+            var items = iService.GetItems();
             return Ok(items);
+        }
+
+        public IHttpActionResult Get(int id)
+        {
+            var iService = CreateItemService();
+            var item = iService.GetItemById(id);
+            return Ok(item);
         }
 
         public IHttpActionResult Post(ItemCreate item)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var cService = CreateItemService();
-            if (!cService.CreateItem(item))
+            var iService = CreateItemService();
+            if (!iService.CreateItem(item))
             {
                 return InternalServerError();
             }
             return Ok();
         }
 
-        public IHttpActionResult Edit(ItemEdit items)
+
+        public IHttpActionResult Put(ItemEdit items)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var cService = CreateItemService();
-            if (!cService.EditItem(items))
+            var iService = CreateItemService();
+            if (!iService.EditItem(items))
             {
                 return InternalServerError();
             }
@@ -45,9 +53,9 @@ namespace FinalProject.Controllers
 
         public IHttpActionResult Delete(int id)
         {
-            var service = CreateItemService();
+            var iService = CreateItemService();
 
-            if (!service.DeleteItem(id))
+            if (!iService.DeleteItem(id))
                 return InternalServerError();
 
             return Ok();
