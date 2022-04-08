@@ -54,22 +54,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CharacterCreate.cs" />
-    <Compile Include="CharacterDetail.cs" />
-    <Compile Include="CharacterEdit.cs" />
-    <Compile Include="CharacterListItem.cs" />
-    <Compile Include="InventoryCreate.cs" />
-    <Compile Include="InventoryDetail.cs" />
-    <Compile Include="InventoryEdit.cs" />
-    <Compile Include="InventoryListItem.cs" />
-    <Compile Include="ItemCreate.cs" />
-    <Compile Include="ItemDetail.cs" />
-    <Compile Include="ItemEdit.cs" />
-    <Compile Include="ItemListItem.cs" />
-    <Compile Include="PlaceCreate.cs" />
-    <Compile Include="PlaceDetail.cs" />
-    <Compile Include="PlaceEdit.cs" />
-    <Compile Include="PlaceListItem.cs" />
+    <Compile Include="Character\CharacterCreate.cs" />
+    <Compile Include="Character\CharacterDetail.cs" />
+    <Compile Include="Character\CharacterEdit.cs" />
+    <Compile Include="Character\CharacterListItem.cs" />
+    <Compile Include="Inventory\InventoryCreate.cs" />
+    <Compile Include="Inventory\InventoryDetail.cs" />
+    <Compile Include="Inventory\InventoryEdit.cs" />
+    <Compile Include="Inventory\InventoryListItem.cs" />
+    <Compile Include="Item\ItemCreate.cs" />
+    <Compile Include="Item\ItemDetail.cs" />
+    <Compile Include="Item\ItemEdit.cs" />
+    <Compile Include="Item\ItemListItem.cs" />
+    <Compile Include="Place\PlaceCreate.cs" />
+    <Compile Include="Place\PlaceDetail.cs" />
+    <Compile Include="Place\PlaceEdit.cs" />
+    <Compile Include="Place\PlaceListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -82,5 +82,6 @@
       <Name>Spongebob.Data</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

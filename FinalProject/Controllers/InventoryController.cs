@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Spongebob.Models;
+using Spongebob.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
