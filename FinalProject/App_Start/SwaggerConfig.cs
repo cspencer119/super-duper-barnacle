@@ -1,13 +1,12 @@
 using System.Web.Http;
 using WebActivatorEx;
-using FinalProject;
 using Swashbuckle.Application;
 using System.Linq;
 using Swashbuckle.Swagger;
 using System.Collections.Generic;
 using System.Web.Http.Description;
 using System.Web.Http.Filters;
-
+using FinalProject;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 

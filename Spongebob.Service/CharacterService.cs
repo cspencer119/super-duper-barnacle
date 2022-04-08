@@ -26,10 +26,11 @@ namespace Spongebob.Service
                 {
                     //Should computer generate ID???
                     //CharacterId = model.CharacterId,
+                    UserId = _userId,
                     CharacterName = model.CharacterName,
                     CharacterDescription = model.CharacterDescription,
-                    CharacterJob = model.CharacterJob
-                    //Character Place
+                    CharacterJob = model.CharacterJob,
+                    PlaceId = model.PlaceId
                     //Character Inventory
                 };
             using (var ctx = new ApplicationDbContext())
@@ -44,7 +45,8 @@ namespace Spongebob.Service
             {
                 var query =
                     ctx
-                    .Characters.Select(e => new CharacterListItem
+                    .Characters.Where(e => e.UserId == _userId)
+                    .Select(e => new CharacterListItem
                     {
                         CharacterId = e.CharacterId,
                         CharacterName = e.CharacterName
@@ -67,8 +69,8 @@ namespace Spongebob.Service
                         CharacterName = entity.CharacterName,
                         CharacterDescription = entity.CharacterDescription,
                         CharacterJob = entity.CharacterJob,
-                        CharacterPlace = entity.Place,
-                        Inventory = entity.Inventory
+                        CharacterPlace = entity.Place
+                        //Inventory = entity.Inventory
                     };
             }
         }
@@ -83,8 +85,8 @@ namespace Spongebob.Service
                 entity.CharacterName = model.CharacterName;
                 entity.CharacterDescription = model.CharacterDescription;
                 entity.CharacterJob = model.CharacterJob;
-                entity.Place = model.Place;
-                entity.Inventory = model.Items;
+                //entity.Place = model.Place;
+                //entity.Inventory = model.Items;
 
                 return ctx.SaveChanges() == 1;
             }
@@ -104,5 +106,5 @@ namespace Spongebob.Service
                 return ctx.SaveChanges() == 1;
             }
         }
-     }
+    }
 }
