@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace FinalProject.Controllers
 {
+    [Authorize]
     public class ItemController : ApiController
     {
         public IHttpActionResult Get()
