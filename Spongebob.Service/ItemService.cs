@@ -44,7 +44,7 @@ namespace Spongebob.Service
                     .Where(e => e.UserId == _userId)
                     .Select(
                         e =>
-                        new ItemListItem()
+                        new ItemListItem
                         {
                             ItemId = e.ItemId,
                             ItemName = e.ItemName,
@@ -56,7 +56,7 @@ namespace Spongebob.Service
             }
         }
 
-        public ItemDetail GetNoteById(int id)
+        public ItemDetail GetItemById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -65,7 +65,7 @@ namespace Spongebob.Service
                     .Items
                     .Single(e => e.ItemId == id && e.UserId == _userId);
                 return
-                    new ItemDetail()
+                    new ItemDetail
                     {
                         ItemId = entity.ItemId,
                         ItemName = entity.ItemName,
@@ -84,6 +84,7 @@ namespace Spongebob.Service
                     .Items
                     .Single(e => e.ItemId == model.ItemId && e.UserId == _userId);
 
+                entity.ItemId = model.ItemId;
                 entity.ItemName = model.ItemName;
                 entity.ItemDescription = model.ItemDescription;
                 entity.ItemIsCool = model.ItemIsCool;
