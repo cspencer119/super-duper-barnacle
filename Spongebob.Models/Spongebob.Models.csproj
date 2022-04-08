@@ -58,6 +58,10 @@
     <Compile Include="CharacterDetail.cs" />
     <Compile Include="CharacterEdit.cs" />
     <Compile Include="CharacterListItem.cs" />
+    <Compile Include="InventoryCreate.cs" />
+    <Compile Include="InventoryDetail.cs" />
+    <Compile Include="InventoryEdit.cs" />
+    <Compile Include="InventoryListItem.cs" />
     <Compile Include="ItemCreate.cs" />
     <Compile Include="ItemDetail.cs" />
     <Compile Include="ItemEdit.cs" />
