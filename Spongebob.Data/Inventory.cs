@@ -14,6 +14,9 @@ namespace Spongebob.Data
         public int InventoryId { get; set; }
 
         [Required]
+        public Guid UserId { get; set; }
+
+        [Required]
         public int ItemId { get; set; }
 
         [ForeignKey(nameof(ItemId))]
