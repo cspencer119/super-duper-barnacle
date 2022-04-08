@@ -9,7 +9,7 @@ namespace Spongebob.Models
 {
     public class ItemCreate
     {
-        [Required]
+        
         public int ItemId { get; set; }
 
         [Required]
@@ -20,7 +20,7 @@ namespace Spongebob.Models
         [MaxLength(250)]
         public string ItemDescription { get; set; }
 
-        [Required]
+       
         public bool ItemIsCool { get; set; }
 
     }
