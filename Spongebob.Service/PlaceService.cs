@@ -48,7 +48,7 @@ namespace Spongebob.Service
                     new PlaceDetail
                     {
                         PlaceId = entity.PlaceId,
-                        Placename = entity.PlaceName,
+                        PlaceName = entity.PlaceName,
                         PlaceDiscription = entity.PlaceDiscription,
                         Address = entity.Address
                     };
