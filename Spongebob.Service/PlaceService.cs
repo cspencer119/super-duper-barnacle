@@ -20,7 +20,7 @@ namespace Spongebob.Service
 
         public bool CreatePlace(PlaceCreate model)
         {
-            var entity = new Place() { UserId = _userId, PlaceName = model.PlaceName, PlaceDiscription = model.PlaceDiscription, Address = model.Address };
+            var entity = new Place() { UserId = _userId, PlaceName = model.PlaceName, PlaceDescription = model.PlaceDiscription, Address = model.Address };
 
             using (var ctx = new ApplicationDbContext())
             {
@@ -49,7 +49,7 @@ namespace Spongebob.Service
                     {
                         PlaceId = entity.PlaceId,
                         PlaceName = entity.PlaceName,
-                        PlaceDiscription = entity.PlaceDiscription,
+                        PlaceDiscription = entity.PlaceDescription,
                         Address = entity.Address
                     };
             }
@@ -62,7 +62,7 @@ namespace Spongebob.Service
                 var entity = ctx.Places.Single(e => e.PlaceId == model.PlaceId && e.UserId == _userId);
 
                 entity.PlaceName = model.PlaceName;
-                entity.PlaceDiscription = model.PlaceDiscription;
+                entity.PlaceDescription = model.PlaceDiscription;
                 entity.Address = model.Address;
 
                 return ctx.SaveChanges() >= 1;
@@ -74,7 +74,7 @@ namespace Spongebob.Service
             using (var ctx = new ApplicationDbContext())
             {
 
-                Place entity = ctx.Places.Single(e => e.PlaceId == placeId && e.UserId == _userId);
+                var entity = ctx.Places.Single(e => e.PlaceId == placeId && e.UserId == _userId);
 
                 ctx.Places.Remove(entity);
 
