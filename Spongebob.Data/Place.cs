@@ -19,7 +19,7 @@ namespace Spongebob.Data
         [Required]
         public string PlaceName { get; set; }
         [Required]
-        public string PlaceDiscription { get; set; }
+        public string PlaceDescription { get; set; }
         [Required]
         public string Address { get; set; }
         
