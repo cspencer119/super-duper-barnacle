@@ -5,8 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Spongebob.Data;
-using Spongebob.Models;
 using Spongebob.Models.Item;
 
 namespace Spongebob.Service
