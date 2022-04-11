@@ -22,6 +22,6 @@ namespace Spongebob.Models
         [Required]
         public int PlaceId { get; set; }
         //public virtual List<Inventory> Items { get; set; } = new List<Inventory>();
-
+        //public int InventoryId { get; set; }
     }
 }

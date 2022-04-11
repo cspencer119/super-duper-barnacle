@@ -62,6 +62,7 @@
     <Compile Include="Inventory\InventoryDetail.cs" />
     <Compile Include="Inventory\InventoryEdit.cs" />
     <Compile Include="Inventory\InventoryListItem.cs" />
+    <Compile Include="Item\ItemCharacterDetail.cs" />
     <Compile Include="Item\ItemCreate.cs" />
     <Compile Include="Item\ItemDetail.cs" />
     <Compile Include="Item\ItemEdit.cs" />
