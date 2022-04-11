@@ -19,8 +19,10 @@ namespace Spongebob.Models
         public string CharacterDescription { get; set; }
         [Required]
         public string CharacterJob { get; set; }
-        [Required]
+        //[Required]
         public int PlaceId { get; set; }
+        public int InventoryId { get; set; }
+        
         //public virtual List<Inventory> Items { get; set; } = new List<Inventory>();
         //public int InventoryId { get; set; }
     }

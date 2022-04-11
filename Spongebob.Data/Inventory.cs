@@ -19,13 +19,13 @@ namespace Spongebob.Data
         [Required]
         public int ItemId { get; set; }
 
-        [ForeignKey(nameof(ItemId))]
+        //[ForeignKey(nameof(ItemId))]
         public virtual Item Item { get; set; }
 
         [Required]
         public int CharacterId { get; set; }
         
-        [ForeignKey(nameof(CharacterId))]
+        //[ForeignKey(nameof(CharacterId))]
         public virtual Character Character { get; set; }
 
     }

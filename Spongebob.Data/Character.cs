@@ -22,10 +22,10 @@ namespace Spongebob.Data
         public string CharacterJob { get; set; }
 
         [ForeignKey(nameof(Place))]
-        public int PlaceId { get; set; }
+        public int? PlaceId { get; set; }
         public virtual Place Place { get; set; }
 
-        
+        public int? InventoryId { get; set; }
         public virtual List<Inventory> Inventory { get; set; }
 
         
