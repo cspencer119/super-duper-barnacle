@@ -49,7 +49,6 @@ namespace Spongebob.Service
                         {
                             ItemId = e.ItemId,
                             InventoryId = e.InventoryId,
-                            //ItemList = e.ItemList,
                             CharacterId = e.CharacterId,
                         }
                         );
