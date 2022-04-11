@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Spongebob.Data;
 using Spongebob.Models;
+using Spongebob.Models.Item;
 
 namespace Spongebob.Service
 {
@@ -23,7 +24,7 @@ namespace Spongebob.Service
         {
             var entity =
                 new Character()
-                {   
+                {
                     UserId = _userId,
                     CharacterName = model.CharacterName,
                     CharacterDescription = model.CharacterDescription,
@@ -69,8 +70,11 @@ namespace Spongebob.Service
                         CharacterJob = entity.CharacterJob,
                         PlaceId = entity.Place.PlaceId,
                         PlaceName = entity.Place.PlaceName,
-                        ItemId = entity.Item.ItemId,
-                        ItemName = entity.Item.ItemName,
+                        Inventory = entity.Inventory.Select(e => new InventoryListItem { CharacterId = e.CharacterId, InventoryId = e.InventoryId, ItemId = e.ItemId }).ToList(),
+                        Items = entity.Inventory.Select(i => new ItemCharacterDetail
+                        {
+                            ItemName = i.Item.ItemName,
+                        }).ToList(),
                     };
             }
         }

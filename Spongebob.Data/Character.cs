@@ -25,10 +25,8 @@ namespace Spongebob.Data
         public int PlaceId { get; set; }
         public virtual Place Place { get; set; }
 
-        [ForeignKey(nameof(Item))]
-        public int ItemId { get; set; }
-        public virtual Item Item { get; set; }
-       // public virtual List<Inventory> Inventory { get; set; }
+        
+        public virtual List<Inventory> Inventory { get; set; }
 
         
 
