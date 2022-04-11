@@ -10,13 +10,10 @@ namespace Spongebob.Models
 {
     public class CharacterCreate
     {
-
-        
         [MaxLength(30, ErrorMessage = "There are too many characters in this field. (Max 30)")]
         [Required]
         public string CharacterName { get; set; }
         //public override string ToString() => CharacterName;
-
         [MaxLength(1000, ErrorMessage = "There are too many characters in this field. (Max 1000)")]
         [Required]
         public string CharacterDescription { get; set; }

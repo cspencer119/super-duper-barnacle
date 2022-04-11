@@ -9,19 +9,12 @@ namespace Spongebob.Models
 {
     public class ItemCreate
     {
-        
-
-       
-
         [Required]
         [MaxLength(50)]
         public string ItemName { get; set; }
-
         [Required]
         [MaxLength(250)]
         public string ItemDescription { get; set; }
-
-       
         public bool ItemIsCool { get; set; }
 
     }

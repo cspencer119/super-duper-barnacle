@@ -10,7 +10,5 @@ namespace Spongebob.Models
     {
         public int ItemId { get; set; }
         public int CharacterId { get; set; }
-
-
     }
 }

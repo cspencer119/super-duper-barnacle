@@ -23,9 +23,7 @@ namespace Spongebob.Service
         {
             var entity =
                 new Character()
-                {
-                    //Should computer generate ID???
-                    //CharacterId = model.CharacterId,
+                {   
                     UserId = _userId,
                     CharacterName = model.CharacterName,
                     CharacterDescription = model.CharacterDescription,
@@ -85,7 +83,7 @@ namespace Spongebob.Service
                 entity.CharacterName = model.CharacterName;
                 entity.CharacterDescription = model.CharacterDescription;
                 entity.CharacterJob = model.CharacterJob;
-                //entity.Place = model.Place;
+                entity.PlaceId = model.PlaceId;
                 //entity.Inventory = model.Items;
 
                 return ctx.SaveChanges() == 1;
