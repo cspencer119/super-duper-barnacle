@@ -23,6 +23,7 @@ namespace Spongebob.Service
             var entity =
                 new Inventory()
                 {
+                    UserId = _userId,
                     CharacterId = model.CharacterId,
                     ItemId = model.ItemId,
 
