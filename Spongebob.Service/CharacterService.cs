@@ -28,8 +28,8 @@ namespace Spongebob.Service
                     CharacterName = model.CharacterName,
                     CharacterDescription = model.CharacterDescription,
                     CharacterJob = model.CharacterJob,
-                    PlaceId = model.PlaceId
-                    //Character Inventory
+                    PlaceId = model.PlaceId,
+                    ItemId = model.ItemId,
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -69,7 +69,8 @@ namespace Spongebob.Service
                         CharacterJob = entity.CharacterJob,
                         PlaceId = entity.Place.PlaceId,
                         PlaceName = entity.Place.PlaceName,
-                        //Inventory = entity.Inventory
+                        ItemId = entity.Item.ItemId,
+                        ItemName = entity.Item.ItemName,
                     };
             }
         }
@@ -85,7 +86,7 @@ namespace Spongebob.Service
                 entity.CharacterDescription = model.CharacterDescription;
                 entity.CharacterJob = model.CharacterJob;
                 entity.PlaceId = model.PlaceId;
-                //entity.Inventory = model.Items;
+                entity.ItemId = model.ItemId;
 
                 return ctx.SaveChanges() == 1;
             }

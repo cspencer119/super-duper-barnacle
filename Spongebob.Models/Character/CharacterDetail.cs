@@ -21,7 +21,8 @@ namespace Spongebob.Models
         [Display(Name = "Character Place")]
         public int PlaceId { get; set; }
         public string PlaceName { get; set; }
-
-        public ICollection<Inventory> Inventory { get; set; }
+        public int ItemId { get; set; }
+        public string ItemName { get; set; }
+        //public ICollection<Inventory> Inventory { get; set; }
     }
 }
