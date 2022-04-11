@@ -11,5 +11,7 @@ namespace Spongebob.Models
         public int InventoryId { get; set; }
         public int ItemId { get; set; }
         public int CharacterId { get; set; }
+        
+        public virtual ItemListItem ItemList { get; set; }
     }
 }
