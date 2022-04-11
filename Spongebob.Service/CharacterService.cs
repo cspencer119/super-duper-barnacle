@@ -61,6 +61,21 @@ namespace Spongebob.Service
                 var entity =
                     ctx
                     .Characters.Single(e => e.CharacterId == characterID);
+                if (entity.PlaceId == null)
+                    return
+                        new CharacterDetail
+                        {
+                            CharacterId = entity.CharacterId,
+                            CharacterName = entity.CharacterName,
+                            CharacterDescription = entity.CharacterDescription,
+                            CharacterJob = entity.CharacterJob,
+                            Inventory = entity.Inventory.Select(e => new InventoryListItem { CharacterId = e.CharacterId, InventoryId = e.InventoryId, ItemId = e.ItemId }).ToList(),
+                            Items = entity.Inventory.Select(i => new ItemCharacterDetail
+                            {
+                                ItemName = i.Item.ItemName,
+                            }).ToList(),
+                        };
+                else 
                 return
                     new CharacterDetail
                     {

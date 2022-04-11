@@ -19,7 +19,7 @@ namespace Spongebob.Models
         [Display(Name = "Character Job")]
         public string CharacterJob { get; set; }
         [Display(Name = "Character Place")]
-        public int PlaceId { get; set; }
+        public int? PlaceId { get; set; }
         public string PlaceName { get; set; }
         public List<ItemCharacterDetail> Items { get; set; }
 

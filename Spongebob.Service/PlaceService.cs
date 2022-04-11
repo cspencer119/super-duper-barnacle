@@ -76,8 +76,10 @@ namespace Spongebob.Service
 
                 var entity = ctx.Places.Single(e => e.PlaceId == placeId && e.UserId == _userId);
 
-                ctx.Places.Remove(entity);
+                var ch = ctx.Characters.Single(e => e.PlaceId == placeId && e.UserId == _userId);
 
+                ctx.Places.Remove(entity);
+                ch.PlaceId = null;
                 return ctx.SaveChanges() >= 1;
             }
 
