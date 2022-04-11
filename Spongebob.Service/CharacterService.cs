@@ -67,7 +67,10 @@ namespace Spongebob.Service
                         CharacterName = entity.CharacterName,
                         CharacterDescription = entity.CharacterDescription,
                         CharacterJob = entity.CharacterJob,
-                        CharacterPlace = entity.Place
+                        PlaceId = entity.Place.PlaceId,
+                        PlaceName = entity.Place.PlaceName,
+                        PlaceDescription = entity.Place.PlaceDescription,
+                        Address = entity.Place.Address
                         //Inventory = entity.Inventory
                     };
             }
