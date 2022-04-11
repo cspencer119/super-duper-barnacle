@@ -8,8 +8,7 @@ using Spongebob.Data;
 namespace Spongebob.Models
 {
     public class CharacterEdit
-    {
-        
+    {    
         public int CharacterId { get; set; }
         public string CharacterName { get; set; }  
         public string CharacterDescription { get; set; }

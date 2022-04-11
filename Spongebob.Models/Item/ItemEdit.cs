@@ -12,6 +12,5 @@ namespace Spongebob.Models
         public string ItemName { get; set; }
         public string ItemDescription { get; set; }
         public bool ItemIsCool { get; set; }
-
     }
 }
