@@ -15,10 +15,7 @@ namespace Spongebob.Models
         [MaxLength (100, ErrorMessage ="There are too many characters in this field.")]
         public string PlaceName { get; set; }
 
-        public string PlaceDiscription { get; set; }
+        public string PlaceDescription { get; set; }
         public string Address { get; set; }
-
-
-
     }
 }
