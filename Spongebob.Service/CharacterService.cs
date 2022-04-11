@@ -30,7 +30,7 @@ namespace Spongebob.Service
                     CharacterDescription = model.CharacterDescription,
                     CharacterJob = model.CharacterJob,
                     PlaceId = model.PlaceId,
-                    ItemId = model.ItemId,
+                    InventoryId = model.InventoryId,
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -105,7 +105,7 @@ namespace Spongebob.Service
                 entity.CharacterDescription = model.CharacterDescription;
                 entity.CharacterJob = model.CharacterJob;
                 entity.PlaceId = model.PlaceId;
-                entity.ItemId = model.ItemId;
+                entity.InventoryId = model.InventoryId;
 
                 return ctx.SaveChanges() == 1;
             }
@@ -120,12 +120,9 @@ namespace Spongebob.Service
                     .Characters
                     .Single(e => e.CharacterId == characterID);
 
-                var inventory = ctx.Inventories.Single(e => e.CharacterId == characterID);
-
                 ctx.Characters.Remove(entity);
-                ctx.Inventories.Remove(inventory);
 
-                return ctx.SaveChanges() >= 1;
+                return ctx.SaveChanges() == 1;
             }
         }
     }

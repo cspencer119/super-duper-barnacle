@@ -25,7 +25,7 @@ namespace Spongebob.Data
         public int? PlaceId { get; set; }
         public virtual Place Place { get; set; }
 
-        
+        public int? InventoryId { get; set; }
         public virtual List<Inventory> Inventory { get; set; }
 
         
