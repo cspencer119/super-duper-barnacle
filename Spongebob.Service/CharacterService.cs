@@ -27,7 +27,9 @@ namespace Spongebob.Service
                     UserId = _userId,
                     CharacterName = model.CharacterName,
                     CharacterDescription = model.CharacterDescription,
+
                     CharacterJob = model.CharacterJob
+
                 };
                 using (var ctx = new ApplicationDbContext())
                 {
@@ -40,15 +42,19 @@ namespace Spongebob.Service
     {
         using (var ctx = new ApplicationDbContext())
         {
-            var query =
-                ctx
-                .Characters.Where(e => e.UserId == _userId)
-                .Select(e => new CharacterListItem
-                {
-                    CharacterId = e.CharacterId,
-                    CharacterName = e.CharacterName
-                });
-            return query.ToArray();
+
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Characters
+                    .Select(e => new CharacterListItem
+                    {
+                        CharacterId = e.CharacterId,
+                        CharacterName = e.CharacterName
+                    });
+                return query.ToArray();
+            }
         }
     }
 
@@ -56,6 +62,7 @@ namespace Spongebob.Service
     {
         using (var ctx = new ApplicationDbContext())
         {
+
             var entity =
                 ctx
                 .Characters.Single(e => e.CharacterId == characterID);
@@ -103,6 +110,7 @@ namespace Spongebob.Service
     {
         using (var ctx = new ApplicationDbContext())
         {
+
             var entity =
                 ctx
                 .Characters.Single(e => e.CharacterId == model.CharacterId);
