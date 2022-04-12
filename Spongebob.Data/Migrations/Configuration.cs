@@ -1,10 +1,11 @@
-﻿namespace Spongebob.Data.Migrations
-{
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
+﻿using System;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
+using System.Linq;
+using Spongebob.Data;
 
+namespace Spongebob.Data.Migrations
+{
     internal sealed class Configuration : DbMigrationsConfiguration<Spongebob.Data.ApplicationDbContext>
     {
         public Configuration()
@@ -13,8 +14,7 @@
             ContextKey = "Spongebob.Data.ApplicationDbContext";
         }
 
-        //using System.Data.Entity.Migrations;
-        //using Spongebob.Data;
+        
 
         protected override void Seed(Spongebob.Data.ApplicationDbContext context)
         {
