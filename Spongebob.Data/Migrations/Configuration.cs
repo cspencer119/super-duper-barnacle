@@ -1,20 +1,23 @@
-﻿//namespace Spongebob.Data.Migrations
-//{
-//    using System;
-//    using System.Data.Entity;
-//    using System.Data.Entity.Migrations;
-//    using System.Linq;
+﻿namespace Spongebob.Data.Migrations
+{
+    using System;
+    using System.Data.Entity;
+    using System.Data.Entity.Migrations;
+    using System.Linq;
 
-//    internal sealed class Configuration : DbMigrationsConfiguration<Spongebob.Data.ApplicationDbContext>
-//    {
-//        public Configuration()
-//        {
-//            AutomaticMigrationsEnabled = false;
-//            ContextKey = "Spongebob.Data.ApplicationDbContext";
-//        }
+    internal sealed class Configuration : DbMigrationsConfiguration<Spongebob.Data.ApplicationDbContext>
+    {
+        public Configuration()
+        {
+            AutomaticMigrationsEnabled = false;
+            ContextKey = "Spongebob.Data.ApplicationDbContext";
+        }
+
+        //using System.Data.Entity.Migrations;
+        //using Spongebob.Data;
 
         protected override void Seed(Spongebob.Data.ApplicationDbContext context)
-        {            
+        {
             context.Characters.AddOrUpdate(x => x.CharacterId,
             new Character()
             {
@@ -22,7 +25,7 @@
                 CharacterName = "Spongebob Squarepants",
                 CharacterDescription = "The yellow sponge under the sea. Cooks at the Krusty Krab.",
                 CharacterJob = "Fry Cook",
-                
+
                 //PlaceId = 1,
                 //InventoryId = 1
             },
@@ -32,7 +35,7 @@
                 CharacterName = "Squidward Tentacles",
                 CharacterDescription = "A cranky artistic squid stuck working as a cashier",
                 CharacterJob = "Cashier",
-               //PlaceId = 2,
+                //PlaceId = 2,
                 //InventoryId = 2
             },
             new Character()
@@ -44,8 +47,8 @@
                 //PlaceId = 3
             }
             );
-                    
-        
+
+
             context.Places.AddOrUpdate(x => x.PlaceId,
             new Place()
             {
@@ -76,7 +79,7 @@
                 PlaceDescription = "The most popular restaurant in Bikini Bottom. Home of the Krabby Patty."
             }
             );
-                
+
 
             context.Items.AddOrUpdate(x => x.ItemId,
                  new Item()
@@ -127,19 +130,19 @@
                      ItemIsCool = false,
                      //InventoryId = 2
                  });
-            
+
 
             context.Inventories.AddOrUpdate(x => x.InventoryId,
                  new Inventory()
                  {
                      InventoryId = 1,
-                     ItemId =1,
+                     ItemId = 1,
                      CharacterId = 1,
                  },
                  new Inventory()
                  {
                      InventoryId = 2,
-                     ItemId =2,
+                     ItemId = 2,
                      CharacterId = 1
                  },
                  new Inventory()
@@ -152,7 +155,7 @@
                  {
                      InventoryId = 4,
                      ItemId = 4,
-                     CharacterId =2
+                     CharacterId = 2
                  },
                  new Inventory()
                  {
@@ -167,8 +170,7 @@
                      CharacterId = 2
                  });
         }
-        
     }
-} 
+}
 
 

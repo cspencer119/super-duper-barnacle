@@ -40,9 +40,6 @@ namespace Spongebob.Service
     
     public IEnumerable<CharacterListItem> GetCharacter()
     {
-        using (var ctx = new ApplicationDbContext())
-        {
-
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
@@ -55,7 +52,7 @@ namespace Spongebob.Service
                     });
                 return query.ToArray();
             }
-        }
+        
     }
 
     public CharacterDetail GetCharacterById(int characterID)
