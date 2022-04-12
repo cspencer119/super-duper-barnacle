@@ -28,7 +28,6 @@ namespace Spongebob.Service
                     CharacterDescription = model.CharacterDescription,
                     CharacterJob = model.CharacterJob,
                     PlaceId = model.PlaceId,
-                    InventoryId = model.InventoryId,
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -103,7 +102,7 @@ namespace Spongebob.Service
                 entity.CharacterDescription = model.CharacterDescription;
                 entity.CharacterJob = model.CharacterJob;
                 entity.PlaceId = model.PlaceId;
-                entity.InventoryId = model.InventoryId;
+                
 
                 return ctx.SaveChanges() == 1;
             }
