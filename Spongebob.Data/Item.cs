@@ -24,5 +24,7 @@ namespace Spongebob.Data
         [Required]
         public bool ItemIsCool { get; set; }
 
+        public int InventoryId { get; set; }
+
     }
 }
