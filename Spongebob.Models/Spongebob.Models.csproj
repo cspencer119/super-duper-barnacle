@@ -61,6 +61,9 @@
     <Compile Include="Character\CharacterDetail.cs" />
     <Compile Include="Character\CharacterEdit.cs" />
     <Compile Include="Character\CharacterListItem.cs" />
+    <Compile Include="Hangouts\HangoutsDetail.cs" />
+    <Compile Include="Hangouts\HangoutsEdit.cs" />
+    <Compile Include="Hangouts\HangoutsListItem.cs" />
     <Compile Include="Inventory\InventoryCreate.cs" />
     <Compile Include="Inventory\InventoryDetail.cs" />
     <Compile Include="Inventory\InventoryEdit.cs" />
@@ -70,6 +73,8 @@
     <Compile Include="Item\ItemDetail.cs" />
     <Compile Include="Item\ItemEdit.cs" />
     <Compile Include="Item\ItemListItem.cs" />
+    <Compile Include="Hangouts\HangoutsCreate.cs" />
+    <Compile Include="Place\PlaceCharacterDetail.cs" />
     <Compile Include="Place\PlaceCreate.cs" />
     <Compile Include="Place\PlaceDetail.cs" />
     <Compile Include="Place\PlaceEdit.cs" />

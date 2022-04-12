@@ -4,7 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Spongebob.Models.Hangouts;
 using Spongebob.Models.Item;
+using Spongebob.Models.Place;
 
 namespace Spongebob.Models
 {
@@ -18,11 +20,11 @@ namespace Spongebob.Models
         public string CharacterDescription { get; set; }
         [Display(Name = "Character Job")]
         public string CharacterJob { get; set; }
-        [Display(Name = "Character Place")]
-        public int? PlaceId { get; set; }
-        public string PlaceName { get; set; }
-        public List<ItemCharacterDetail> Items { get; set; }
+        
+        public List<PlaceCharacterDetail> Places { get; set; }
+        public List<HangoutsListItem> Hangouts { get; set; }
 
+        public List<ItemCharacterDetail> Items { get; set; }
         public List<InventoryListItem> Inventory { get; set; } = new List<InventoryListItem>();
     }
 }
