@@ -8,6 +8,8 @@ namespace Spongebob.Models.Item
 {
     public class ItemCharacterDetail
     {
+        public int ItemId { get; set; }
         public string ItemName { get; set; }
+        
     }
 }

@@ -42,6 +42,8 @@ namespace Spongebob.Data
         
         public DbSet<Inventory> Inventories { get; set; }
 
+        public DbSet<Hangouts> Hangouts { get; set; }
+
 
         public DbSet<Character> Characters { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
