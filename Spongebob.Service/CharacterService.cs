@@ -66,7 +66,7 @@ namespace Spongebob.Service
                             CharacterName = entity.CharacterName,
                             CharacterDescription = entity.CharacterDescription,
                             CharacterJob = entity.CharacterJob,
-                            Inventory = entity.Inventory.Select(e => new InventoryListItem { CharacterId = e.CharacterId, InventoryId = e.InventoryId, ItemId = e.ItemId }).ToList(),
+                            //Inventory = entity.Inventory.Select(e => new InventoryListItem { CharacterId = e.CharacterId, InventoryId = e.InventoryId, ItemId = e.ItemId }).ToList(),
                             Items = entity.Inventory.Select(i => new ItemCharacterDetail
                             {
                                 ItemName = i.Item.ItemName,
