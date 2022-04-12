@@ -86,7 +86,7 @@ namespace Spongebob.Service
                 entity.ItemId = model.ItemId;
                 entity.InventoryId = model.InventoryId;
                 entity.CharacterId = model.CharacterId;
-                return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() >= 1;
             }
         }
 
@@ -101,7 +101,7 @@ namespace Spongebob.Service
 
                 ctx.Inventories.Remove(entity);
 
-                return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() >= 1;
             }
         }
 
