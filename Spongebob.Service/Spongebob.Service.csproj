@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CharacterService.cs" />
+    <Compile Include="HangoutsService.cs" />
     <Compile Include="InventoryService.cs" />
     <Compile Include="ItemService.cs" />
     <Compile Include="PlaceService.cs" />

@@ -1,31 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Spongebob.Data
 {
-    
-    public class Place
+    public class Hangouts
     {
         [Key]
-        public int PlaceId { get; set; }
+        public int HangoutsId { get; set; }
 
         [Required]
         public Guid UserId { get; set; }
 
         [Required]
-        public string PlaceName { get; set; }
-        [Required]
-        public string PlaceDescription { get; set; }
-        [Required]
-        public string Address { get; set; }
+        public int PlaceId { get; set; }
 
-        
+        [ForeignKey(nameof(PlaceId))]
+        public virtual Place Place { get; set; }
+
+        [Required]
+        public int CharacterId { get; set; }
+
+        [ForeignKey(nameof(CharacterId))]
         public virtual Character Character { get; set; }
-        
-        //need enum later
     }
 }
