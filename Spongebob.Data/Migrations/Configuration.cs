@@ -14,16 +14,17 @@
         }
 
         protected override void Seed(Spongebob.Data.ApplicationDbContext context)
-        {
-            .context.Characters.AddOrUpdate(x => x.CharacterId,
+        {            
+            context.Characters.AddOrUpdate(x => x.CharacterId,
             new Character()
             {
                 CharacterId = 1,
                 CharacterName = "Spongebob Squarepants",
                 CharacterDescription = "The yellow sponge under the sea. Cooks at the Krusty Krab.",
                 CharacterJob = "Fry Cook",
-                PlaceId = 1,
-                InventoryId = 1
+                
+                //PlaceId = 1,
+                //InventoryId = 1
             },
             new Character()
             {
@@ -31,8 +32,8 @@
                 CharacterName = "Squidward Tentacles",
                 CharacterDescription = "A cranky artistic squid stuck working as a cashier",
                 CharacterJob = "Cashier",
-                PlaceId = 2,
-                InventoryId = 2
+               //PlaceId = 2,
+                //InventoryId = 2
             },
             new Character()
             {
@@ -40,11 +41,19 @@
                 CharacterName = "Mr. Eugene Krabs",
                 CharacterDescription = "A greedy crab who owns the Krusty Krab",
                 CharacterJob = "Owner of Krusty Krab",
-                PlaceId = 3
+                //PlaceId = 3
             }
             );
+                    
         
-            .context.Places.AddOrUpdate(x => x.PlaceId,
+            context.Places.AddOrUpdate(x => x.PlaceId,
+            new Place()
+            {
+                PlaceId = 1,
+                PlaceName = "Bikini Bottom",
+                Address = "Bikini Atoll",
+                PlaceDescription = "The heartbeat of the area a thriving metropolis and houses nearly every character in the series."
+            },
             new Place()
             {
                 PlaceId = 1,
@@ -67,13 +76,14 @@
                 PlaceDescription = "The most popular restaurant in Bikini Bottom. Home of the Krabby Patty."
             }
             );
+                
 
-            .context.Items.AddOrUpdate(x => x.ItemId,
+            context.Items.AddOrUpdate(x => x.ItemId,
                  new Item()
                  {
                      ItemId = 1,
                      ItemName = "Spatula",
-                     ItemDescription = "Spongebobs cookiing tool. Used for making krabby patties",
+                     ItemDescription = "Spongebobs cooking tool. Used for making krabby patties",
                      ItemIsCool = true,
                      InventoryId = 1
                  },
@@ -115,21 +125,49 @@
                      ItemName = "Painting supplies",
                      ItemDescription = "Squidwards tools for making all of his uhhh 'art'.",
                      ItemIsCool = false,
-                     InventoryId = 2
+                     //InventoryId = 2
                  });
+            
 
-            .context.Inventories.AddOrUpdate(x => x.InventoryId,
+            context.Inventories.AddOrUpdate(x => x.InventoryId,
                  new Inventory()
                  {
                      InventoryId = 1,
+                     ItemId =1,
                      CharacterId = 1,
                  },
                  new Inventory()
                  {
                      InventoryId = 2,
+                     ItemId =2,
+                     CharacterId = 1
+                 },
+                 new Inventory()
+                 {
+                     InventoryId = 3,
+                     ItemId = 3,
+                     CharacterId = 1
+                 },
+                 new Inventory()
+                 {
+                     InventoryId = 4,
+                     ItemId = 4,
+                     CharacterId =2
+                 },
+                 new Inventory()
+                 {
+                     InventoryId = 5,
+                     ItemId = 5,
+                     CharacterId = 2
+                 },
+                 new Inventory()
+                 {
+                     InventoryId = 6,
+                     ItemId = 6,
                      CharacterId = 2
                  });
         }
+        
     }
 } 
 
