@@ -41,7 +41,7 @@ namespace Spongebob.Service
             {
                 var query =
                     ctx
-                    .Characters.Where(e => e.UserId == _userId)
+                    .Characters
                     .Select(e => new CharacterListItem
                     {
                         CharacterId = e.CharacterId,
