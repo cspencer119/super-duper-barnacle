@@ -12,7 +12,7 @@ using System.Web.Http;
 
 namespace FinalProject.Controllers
 {
-    [Authorize]
+    
     public class HangoutsController : ApiController
     {
         public IHttpActionResult Get()
@@ -21,13 +21,13 @@ namespace FinalProject.Controllers
             var hangouts = iService.GetHangouts();
             return Ok(hangouts);
         }
-
+        [Authorize]
         public IHttpActionResult Post(HangoutsCreate model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreateHangoutsService();
+            var service = CreateHangoutsServiceUserId();
 
             if (!service.CreateHangouts(model))
                 return InternalServerError();
@@ -55,13 +55,13 @@ namespace FinalProject.Controllers
             return Ok();
 
         }
-
+        [Authorize]
         public IHttpActionResult Delete(int id)
         {
-            var iService = CreateHangoutsService();
+            var iService = CreateHangoutsServiceUserId();
 
             if (!iService.DeleteHangouts(id))
-                return InternalServerError();
+                return BadRequest("You do not have access to delete Hangouts in Seed list!");
 
             return Ok();
 
@@ -69,10 +69,13 @@ namespace FinalProject.Controllers
 
 
 
-
-
-
         private HangoutsService CreateHangoutsService()
+        {
+            var hangoutsService = new HangoutsService();
+            return hangoutsService;
+        }
+
+        private HangoutsService CreateHangoutsServiceUserId()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var hangoutsService = new HangoutsService(userId);

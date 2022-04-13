@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace FinalProject.Controllers
 {
-    [Authorize]
+    
     public class InventoryController : ApiController
     {
 
@@ -20,13 +20,13 @@ namespace FinalProject.Controllers
             var inventory = iService.GetInventory();
             return Ok(inventory);
         }
-
+        [Authorize]
         public IHttpActionResult Post(InventoryCreate model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreateInventoryService();
+            var service = CreateInventoryServiceUserId();
 
             if (!service.CreateInventory(model))
                 return InternalServerError();
@@ -54,13 +54,13 @@ namespace FinalProject.Controllers
             return Ok();
 
         }
-
+        [Authorize]
         public IHttpActionResult Delete(int id)
         {
-            var iService = CreateInventoryService();
+            var iService = CreateInventoryServiceUserId();
 
             if (!iService.DeleteInventory(id))
-                return InternalServerError();
+                return BadRequest("You do not have access to delete Inventories in Seed list!");
 
             return Ok();
 
@@ -68,10 +68,14 @@ namespace FinalProject.Controllers
 
 
 
-
-
-
         private InventoryService CreateInventoryService()
+        {
+            var inventoryService = new InventoryService();
+            return inventoryService;
+        }
+
+
+        private InventoryService CreateInventoryServiceUserId()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var inventoryService = new InventoryService(userId);

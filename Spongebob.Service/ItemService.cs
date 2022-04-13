@@ -11,7 +11,7 @@ namespace Spongebob.Service
     public class ItemService
     {
         private readonly Guid _userId;
-
+        public ItemService() { }
         public ItemService(Guid userId)
         {
             _userId = userId;
@@ -30,7 +30,7 @@ namespace Spongebob.Service
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Items.Add(entity);
-                    return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() == 1;
             }
         }
 
@@ -41,7 +41,6 @@ namespace Spongebob.Service
                 var query =
                     ctx
                     .Items
-                    .Where(e => e.UserId == _userId)
                     .Select(
                         e =>
                         new ItemListItem
@@ -63,7 +62,7 @@ namespace Spongebob.Service
                 var entity =
                     ctx
                     .Items
-                    .Single(e => e.ItemId == id && e.UserId == _userId);
+                    .Single(e => e.ItemId == id);
                 return
                     new ItemDetail
                     {
@@ -82,7 +81,7 @@ namespace Spongebob.Service
                 var entity =
                     ctx
                     .Items
-                    .Single(e => e.ItemId == model.ItemId && e.UserId == _userId);
+                    .Single(e => e.ItemId == model.ItemId);
 
                 entity.ItemId = model.ItemId;
                 entity.ItemName = model.ItemName;
@@ -97,21 +96,32 @@ namespace Spongebob.Service
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity =
-                    ctx
-                    .Items
-                    .Single(e => e.ItemId == itemId && e.UserId == _userId);
-
-                var inventories = ctx.Inventories.Where(e => e.UserId == _userId);
-                foreach(var inventory in inventories)
+                var userItems = ctx.Items.Where(e => e.UserId == _userId).ToArray();
+                foreach (var i in userItems)
                 {
-                    if (inventory.ItemId == itemId)
-                        ctx.Inventories.Remove(inventory);
-                }
+                    if (i.ItemId == itemId)
+                    {
 
-                ctx.Items.Remove(entity);
-                
-                return ctx.SaveChanges() >= 1;
+
+
+                        var entity =
+                            ctx
+                            .Items
+                            .Single(e => e.ItemId == itemId && e.UserId == _userId);
+
+                        var inventories = ctx.Inventories.Where(e => e.UserId == _userId);
+                        foreach (var inventory in inventories)
+                        {
+                            if (inventory.ItemId == itemId)
+                                ctx.Inventories.Remove(inventory);
+                        }
+
+                        ctx.Items.Remove(entity);
+
+                        return ctx.SaveChanges() >= 1;
+                    }
+                }
+                return false;
             }
         }
 
