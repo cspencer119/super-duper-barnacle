@@ -58,15 +58,15 @@ https://localhost:Your#Here/api/Place
 ```sh
 https://localhost:Your#Here/api/Place/{id}
 ```
--Post
+- Post
 ```sh
 https://localhost:Your#Here/api/Place
 ```
--Put
+- Put
 ```sh
 https://localhost:Your#Here/api/Place
 ```
--Delete by ID
+- Delete by ID
 ```sh
 https://localhost:Your#Here/api/Place/{id}
 ```
@@ -80,15 +80,15 @@ https://localhost:Your#Here/api/Character
 ```sh
 https://localhost:Your#Here/api/Character/{id}
 ```
--Post
+- Post
 ```sh
 https://localhost:Your#Here/api/Character
 ```
--Put
+- Put
 ```sh
 https://localhost:Your#Here/api/Character
 ```
--Delete by ID
+- Delete by ID
 ```sh
 https://localhost:Your#Here/api/Character/{id}
 ```
@@ -98,15 +98,15 @@ https://localhost:Your#Here/api/Character/{id}
 ```sh
 https://localhost:Your#Here/api/Inventory
 ```
--Post
+- Post
 ```sh
 https://localhost:Your#Here/api/Inventory
 ```
--Put
+- Put
 ```sh
 https://localhost:Your#Here/api/Inventory
 ```
--Delete by ID
+- Delete by ID
 ```sh
 https://localhost:Your#Here/api/Inventory/{id}
 ```
@@ -120,15 +120,15 @@ https://localhost:Your#Here/api/Item
 ```sh
 https://localhost:Your#Here/api/Item/{id}
 ```
--Post
+- Post
 ```sh
 https://localhost:Your#Here/api/Item
 ```
--Put
+- Put
 ```sh
 https://localhost:Your#Here/api/Item
 ```
--Delete by ID
+- Delete by ID
 ```sh
 https://localhost:Your#Here/api/Item/{id}
 ```
@@ -138,15 +138,15 @@ https://localhost:Your#Here/api/Item/{id}
 ```sh
 https://localhost:Your#Here/api/Hangouts
 ```
--Post
+- Post
 ```sh
 https://localhost:Your#Here/api/Hangouts
 ```
--Put
+- Put
 ```sh
 https://localhost:Your#Here/api/Hangouts
 ```
--Delete by ID
+- Delete by ID
 ```sh
 https://localhost:Your#Here/api/Hangouts/{id}
 ```
