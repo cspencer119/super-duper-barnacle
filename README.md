@@ -7,7 +7,7 @@ various characters, places, and items within the world of bikini bottom.
 - Full crud of Characters, Items, and Places
 - Able to assign items to inventories and attribute those inventories to a specific character
 - Able to have a character have a collection of places that they would hang out in
-- Contains some seeded content of some known characters, items, and places in bikini bottom on the api
+- Contains seeded content of some known characters, items, and places in bikini bottom on the api
 - Able to use swagger to access the API
 
 ## Seeding instructions
