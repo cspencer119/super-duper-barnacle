@@ -21,6 +21,7 @@ namespace Spongebob.Service
             var entity =
                 new Hangouts()
                 {
+                    UserId = _userId,
                     CharacterId = model.CharacterId,
                     PlaceId = model.PlaceId,
 
