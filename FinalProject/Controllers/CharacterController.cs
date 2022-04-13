@@ -10,18 +10,23 @@ using System.Web.Http;
 
 namespace FinalProject.Controllers
 {
-    [Authorize]
+    
     public class CharacterController : ApiController
     {
-
-        private CharacterService CreateCharacterService()
+        
+        private CharacterService CreateCharacterServiceUserId()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var cService = new CharacterService(userId);
             return cService;
         }
 
-
+        private CharacterService CreateCharacterService()
+        {
+            var cService = new CharacterService();
+            return cService;
+        }
+        
         public IHttpActionResult Get()
         {
             var cService = CreateCharacterService();
@@ -29,12 +34,13 @@ namespace FinalProject.Controllers
             return Ok(chara);
         }
 
+        [Authorize]
         public IHttpActionResult Post(CharacterCreate character)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var cService = CreateCharacterService();
+            var cService = CreateCharacterServiceUserId();
 
             if (!cService.CreateCharacter(character))
                 return InternalServerError();
@@ -62,12 +68,13 @@ namespace FinalProject.Controllers
             return Ok();
         }
 
+        [Authorize]
         public IHttpActionResult Delete(int id)
         {
-            var cService = CreateCharacterService();
+            var cService = CreateCharacterServiceUserId();
 
             if (!cService.DeleteCharacter(id))
-                return InternalServerError();
+                return BadRequest("You do not have access to delete Items in Seed list!");
 
             return Ok();
 

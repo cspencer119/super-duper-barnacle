@@ -14,6 +14,7 @@ namespace Spongebob.Service
 
         private readonly Guid _userId;
 
+        public InventoryService() { }
         public InventoryService(Guid userId)
         {
             _userId = userId;
@@ -43,7 +44,6 @@ namespace Spongebob.Service
                 var query =
                     ctx
                     .Inventories
-                   // .Where(e => e.UserId == _userId)
                     .Select(
                         e =>
                         new InventoryListItem
@@ -82,7 +82,7 @@ namespace Spongebob.Service
                 var entity =
                     ctx
                     .Inventories
-                    .Single(e => e.InventoryId == model.InventoryId && e.UserId == _userId);
+                    .Single(e => e.InventoryId == model.InventoryId);
 
                 entity.ItemId = model.ItemId;
                 entity.InventoryId = model.InventoryId;
@@ -95,14 +95,22 @@ namespace Spongebob.Service
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity =
-                    ctx
-                    .Inventories
-                    .Single(e => e.InventoryId == inventoryId && e.UserId == _userId);
+                var userInventory = ctx.Inventories.Where(e => e.UserId == _userId).ToArray();
+                foreach (var i in userInventory)
+                {
+                    if (i.InventoryId == inventoryId)
+                    {
+                        var entity =
+                            ctx
+                            .Inventories
+                            .Single(e => e.InventoryId == inventoryId && e.UserId == _userId);
 
-                ctx.Inventories.Remove(entity);
+                        ctx.Inventories.Remove(entity);
 
-                return ctx.SaveChanges() >= 1;
+                        return ctx.SaveChanges() >= 1;
+                    }
+                }
+                return false;
             }
         }
 

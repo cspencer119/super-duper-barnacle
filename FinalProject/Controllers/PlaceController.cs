@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace FinalProject.Controllers
 {
-    [Authorize]
+    
     public class PlaceController : ApiController
     {
 
@@ -20,13 +20,13 @@ namespace FinalProject.Controllers
             var place = pService.GetPlaces();
             return Ok(place);
         }
-
+        [Authorize]
         public IHttpActionResult Post(PlaceCreate model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreatePlaceService();
+            var service = CreatePlaceServiceUserId();
 
             if (!service.CreatePlace(model))
                 return InternalServerError();
@@ -54,25 +54,30 @@ namespace FinalProject.Controllers
             return Ok();
             
         }
-
+        [Authorize]
         public IHttpActionResult Delete(int id)
         {
-            var pService = CreatePlaceService();
+            var pService = CreatePlaceServiceUserId();
 
             if (!pService.DeletePlace(id))
-                return InternalServerError();
+                return BadRequest("You do not have access to delete Places in Seed list!");
 
             return Ok();
             
         }
 
 
-        private PlaceService CreatePlaceService()
+        private PlaceService CreatePlaceServiceUserId()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var placeService = new PlaceService(userId);
             return placeService;
 
+        }
+        private PlaceService CreatePlaceService()
+        {
+            var placeService = new PlaceService();
+            return placeService;
         }
 
     }

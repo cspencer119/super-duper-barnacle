@@ -13,7 +13,7 @@ namespace Spongebob.Service
     public class CharacterService
     {
         private readonly Guid _userId;
-
+        public CharacterService() { }
         public CharacterService(Guid userId)
         {
             _userId = userId;
@@ -108,14 +108,24 @@ namespace Spongebob.Service
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity =
-                    ctx
-                    .Characters
-                    .Single(e => e.CharacterId == characterID);
+                var userCharacters = ctx.Characters.Where(e => e.UserId == _userId).ToArray();
+                foreach (var c in userCharacters)
+                {
 
-                ctx.Characters.Remove(entity);
+                    if (c.CharacterId == characterID)
+                    {
 
-                return ctx.SaveChanges() == 1;
+                        var entity =
+                            ctx
+                            .Characters
+                            .Single(e => e.CharacterId == characterID && e.UserId == _userId);
+
+                        ctx.Characters.Remove(entity);
+
+                        return ctx.SaveChanges() == 1;
+                    }
+                }
+                return false;
             }
         }
     }

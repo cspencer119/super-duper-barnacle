@@ -12,6 +12,7 @@ namespace Spongebob.Service
     public class HangoutsService
     {
         private readonly Guid _userId;
+        public HangoutsService() { }
         public HangoutsService(Guid userId)
         {
             _userId = userId;
@@ -41,7 +42,6 @@ namespace Spongebob.Service
                 var query =
                     ctx
                     .Hangouts
-                    //.Where(e => e.UserId == _userId)
                     .Select(
                         e =>
                         new HangoutsListItem
@@ -80,7 +80,7 @@ namespace Spongebob.Service
                 var entity =
                     ctx
                     .Hangouts
-                    .Single(e => e.HangoutsId == model.HangoutsId && e.UserId == _userId);
+                    .Single(e => e.HangoutsId == model.HangoutsId);
 
                 entity.PlaceId = model.PlaceId;
                 entity.HangoutsId = model.HangoutsId;
@@ -93,15 +93,22 @@ namespace Spongebob.Service
         {
             using (var ctx = new ApplicationDbContext())
             {
-                
-                var entity =
-                    ctx
-                    .Hangouts
-                    .Single(e => e.HangoutsId == hangoutsId  && _userId == null || e.HangoutsId == hangoutsId && e.UserId == _userId);
+                var userHangout = ctx.Hangouts.Where(e => e.UserId == _userId).ToArray();
+                foreach (var h in userHangout)
+                {
+                    if (h.HangoutsId == hangoutsId)
+                    {
+                        var entity =
+                            ctx
+                            .Hangouts
+                            .Single(e => e.HangoutsId == hangoutsId && e.UserId == _userId);
 
-                ctx.Hangouts.Remove(entity);
+                        ctx.Hangouts.Remove(entity);
 
-                return ctx.SaveChanges() >= 1;
+                        return ctx.SaveChanges() >= 1;
+                    }
+                }
+                return false;
             }
         }
     }

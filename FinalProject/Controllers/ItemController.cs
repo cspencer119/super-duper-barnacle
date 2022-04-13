@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace FinalProject.Controllers
 {
-    [Authorize]
+    
     public class ItemController : ApiController
     {
         public IHttpActionResult Get()
@@ -26,12 +26,12 @@ namespace FinalProject.Controllers
             var item = iService.GetItemById(id);
             return Ok(item);
         }
-
+        [Authorize]
         public IHttpActionResult Post(ItemCreate item)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var iService = CreateItemService();
+            var iService = CreateItemServiceUserId();
             if (!iService.CreateItem(item))
             {
                 return InternalServerError();
@@ -51,22 +51,29 @@ namespace FinalProject.Controllers
             }
             return Ok();
         }
-
+        [Authorize]
         public IHttpActionResult Delete(int id)
         {
-            var iService = CreateItemService();
+            var iService = CreateItemServiceUserId();
 
             if (!iService.DeleteItem(id))
-                return InternalServerError();
+                return BadRequest("You do not have access to delete Items in Seed list!");
 
             return Ok();
         }
 
         private ItemService CreateItemService()
         {
+            
+            var itemService = new ItemService();
+            return itemService;
+        }
+        private ItemService CreateItemServiceUserId()
+        {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var itemService = new ItemService(userId);
             return itemService;
         }
+
     }
 }
