@@ -39,6 +39,118 @@ https://localhost:Your#Here/token
 - With the account you made you can do a full crud of the api for contents you made but not other accounts created
 - With other accounts content you can only look up and update the their contents they made but not delete any of them
 
+## Account
+- Post change password
+```sh
+https://localhost:Your#Here/Account/ChangePassword
+```
+- Post register
+```sh
+https://localhost:Your#Here/Account/Register
+```
+
+## Place
+- Get All
+```sh
+https://localhost:Your#Here/api/Place
+```
+- Get by ID
+```sh
+https://localhost:Your#Here/api/Place/{id}
+```
+-Post
+```sh
+https://localhost:Your#Here/api/Place
+```
+-Put
+```sh
+https://localhost:Your#Here/api/Place
+```
+-Delete by ID
+```sh
+https://localhost:Your#Here/api/Place/{id}
+```
+
+## Character
+- Get All
+```sh
+https://localhost:Your#Here/api/Character
+```
+- Get by ID
+```sh
+https://localhost:Your#Here/api/Character/{id}
+```
+-Post
+```sh
+https://localhost:Your#Here/api/Character
+```
+-Put
+```sh
+https://localhost:Your#Here/api/Character
+```
+-Delete by ID
+```sh
+https://localhost:Your#Here/api/Character/{id}
+```
+
+## Inventory
+- Get All
+```sh
+https://localhost:Your#Here/api/Inventory
+```
+-Post
+```sh
+https://localhost:Your#Here/api/Inventory
+```
+-Put
+```sh
+https://localhost:Your#Here/api/Inventory
+```
+-Delete by ID
+```sh
+https://localhost:Your#Here/api/Inventory/{id}
+```
+
+## Item
+- Get All
+```sh
+https://localhost:Your#Here/api/Item
+```
+- Get by ID
+```sh
+https://localhost:Your#Here/api/Item/{id}
+```
+-Post
+```sh
+https://localhost:Your#Here/api/Item
+```
+-Put
+```sh
+https://localhost:Your#Here/api/Item
+```
+-Delete by ID
+```sh
+https://localhost:Your#Here/api/Item/{id}
+```
+
+## Hangouts
+- Get All
+```sh
+https://localhost:Your#Here/api/Hangouts
+```
+-Post
+```sh
+https://localhost:Your#Here/api/Hangouts
+```
+-Put
+```sh
+https://localhost:Your#Here/api/Hangouts
+```
+-Delete by ID
+```sh
+https://localhost:Your#Here/api/Hangouts/{id}
+```
+
 ## SpongebobAPI Authors
 - Hayden Linville
 - Cyrus Spencer
