@@ -102,11 +102,15 @@ namespace Spongebob.Service
                     .Items
                     .Single(e => e.ItemId == itemId && e.UserId == _userId);
 
-                var inventory = ctx.Inventories.Single(e => e.ItemId == itemId);
-                
+                var inventories = ctx.Inventories.Where(e => e.UserId == _userId);
+                foreach(var inventory in inventories)
+                {
+                    if (inventory.ItemId == itemId)
+                        ctx.Inventories.Remove(inventory);
+                }
 
                 ctx.Items.Remove(entity);
-                ctx.Inventories.Remove(inventory);
+                
                 return ctx.SaveChanges() >= 1;
             }
         }
