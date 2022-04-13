@@ -57,23 +57,25 @@ namespace Spongebob.Service
             }
         }
 
-        //public InventoryDetail GetInventoryById(int id)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var entity =
-        //            ctx
-        //            .Inventories
-        //            .Single(e => e.InventoryId == id && e.UserId == _userId);
-        //        return
-        //            new InventoryDetail
-        //            {
-        //                ItemId = entity.ItemId,
-        //                InventoryId = entity.InventoryId,
-        //                CharacterId = entity.CharacterId,
-        //            };
-        //    }
-        //}
+        public InventoryDetail GetInventoryById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Inventories
+                    .Single(e => e.InventoryId == id);
+                return
+                    new InventoryDetail
+                    {
+                        InventoryId = entity.InventoryId,
+                        CharacterId = entity.CharacterId,
+                        Character = entity.Character.CharacterName,
+                        ItemId = entity.ItemId,
+                        Item = entity.Item.ItemName
+                    };
+            }
+        }
 
         public bool UpdateInventory(InventoryEdit model)
         {
