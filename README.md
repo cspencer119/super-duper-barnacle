@@ -98,6 +98,10 @@ https://localhost:Your#Here/api/Character/{id}
 ```sh
 https://localhost:Your#Here/api/Inventory
 ```
+- Get by ID
+```sh
+https://localhost:Your#Here/api/Inventory/{id}
+```
 - Post
 ```sh
 https://localhost:Your#Here/api/Inventory
@@ -137,6 +141,10 @@ https://localhost:Your#Here/api/Item/{id}
 - Get All
 ```sh
 https://localhost:Your#Here/api/Hangouts
+```
+- Get by ID
+```sh
+https://localhost:Your#Here/api/Hangouts/{id}
 ```
 - Post
 ```sh
