@@ -22,9 +22,7 @@ namespace Spongebob.Models
         public string CharacterJob { get; set; }
         
         public List<PlaceCharacterDetail> Places { get; set; }
-        public List<HangoutsListItem> Hangouts { get; set; }
-
         public List<ItemCharacterDetail> Items { get; set; }
-        public List<InventoryListItem> Inventory { get; set; } = new List<InventoryListItem>();
+ 
     }
 }
