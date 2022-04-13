@@ -31,7 +31,7 @@ Update-Database
 ```sh
 https://localhost:Your#Here/api/Account/Register
 ```
-3. Obtain a bearer token to have access to Posting, Deleting, and updating various parts of the api
+2. Obtain a bearer token to have access to Posting, Deleting, and updating various parts of the api
 ```sh
 https://localhost:Your#Here/token
 ```
