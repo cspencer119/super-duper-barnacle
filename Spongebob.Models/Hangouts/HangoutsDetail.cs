@@ -10,6 +10,8 @@ namespace Spongebob.Models.Hangouts
     {
         public int HangoutsId { get; set; }
         public int PlaceId { get; set; }
+        public string PlaceName { get; set; }
         public int CharacterId { get; set; }
+        public string CharacterName { get; set; }
     }
 }

@@ -55,23 +55,25 @@ namespace Spongebob.Service
             }
         }
 
-        //public HangoutsDetail GetHangoutsById(int id)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var entity =
-        //            ctx
-        //            .Hangouts
-        //            .Single(e => e.HangoutsId == id && e.UserId == _userId);
-        //        return
-        //            new HangoutsDetail
-        //            {
-        //                PlaceId = entity.PlaceId,
-        //                HangoutsId = entity.HangoutsId,
-        //                CharacterId = entity.CharacterId,
-        //            };
-        //    }
-        //}
+        public HangoutsDetail GetHangoutsById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Hangouts
+                    .Single(e => e.HangoutsId == id && e.UserId == _userId);
+                return
+                    new HangoutsDetail
+                    {
+                        HangoutsId = entity.HangoutsId,
+                        CharacterId = entity.CharacterId,
+                        CharacterName = entity.Character.CharacterName,
+                        PlaceId = entity.PlaceId,
+                        PlaceName = entity.Place.PlaceName
+                    };
+            }
+        }
 
         public bool UpdateHangouts(HangoutsEdit model)
         {
