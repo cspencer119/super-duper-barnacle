@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using Spongebob.Models.Item;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +13,7 @@ namespace Spongebob.Models
         public int InventoryId { get; set; }
         public int ItemId { get; set; }
         public int CharacterId { get; set; }
+
+        
     }
 }
