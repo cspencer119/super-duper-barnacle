@@ -84,7 +84,6 @@ namespace Spongebob.Service
                 }
 
                 ctx.Places.Remove(entity);
-                //ctx.Hangouts.Remove(hang);
                 return ctx.SaveChanges() >= 1;
             }
 

@@ -22,10 +22,7 @@ namespace Spongebob.Data
         public string PlaceDescription { get; set; }
         [Required]
         public string Address { get; set; }
-
-        
         public virtual Character Character { get; set; }
-        
-        //need enum later
+
     }
 }
