@@ -34,12 +34,12 @@ namespace FinalProject.Controllers
             return Ok();
         }
 
-        public IHttpActionResult Get(int id)
-        {
-            var iService = CreateInventoryService();
-            var inventory = iService.GetInventoryById(id);
-            return Ok(inventory);
-        }
+        //public IHttpActionResult Get(int id)
+        //{
+        //    var iService = CreateInventoryService();
+        //    var inventory = iService.GetInventoryById(id);
+        //    return Ok(inventory);
+        //}
 
         public IHttpActionResult Put(InventoryEdit inventory)
         {

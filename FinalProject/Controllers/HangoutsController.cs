@@ -35,12 +35,12 @@ namespace FinalProject.Controllers
             return Ok();
         }
 
-        public IHttpActionResult Get(int id)
-        {
-            var iService = CreateHangoutsService();
-            var hangouts = iService.GetHangoutsById(id);
-            return Ok(hangouts);
-        }
+        //public IHttpActionResult Get(int id)
+        //{
+        //    var iService = CreateHangoutsService();
+        //    var hangouts = iService.GetHangoutsById(id);
+        //    return Ok(hangouts);
+        //}
 
         public IHttpActionResult Put(HangoutsEdit hangouts)
         {
