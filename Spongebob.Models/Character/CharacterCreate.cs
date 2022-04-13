@@ -13,19 +13,10 @@ namespace Spongebob.Models
         [MaxLength(30, ErrorMessage = "There are too many characters in this field. (Max 30)")]
         [Required]
         public string CharacterName { get; set; }
-        //public override string ToString() => CharacterName;
         [MaxLength(1000, ErrorMessage = "There are too many characters in this field. (Max 1000)")]
         [Required]
         public string CharacterDescription { get; set; }
         [Required]
         public string CharacterJob { get; set; }
-
-       
-        //public int? PlaceId { get; set; }
-        // public int InventoryId { get; set; }
-
-        
-        //public virtual List<Inventory> Items { get; set; } = new List<Inventory>();
-        //public int InventoryId { get; set; }
     }
 }

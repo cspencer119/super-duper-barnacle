@@ -63,21 +63,6 @@ namespace Spongebob.Service
             var entity =
                 ctx
                 .Characters.Single(e => e.CharacterId == characterID);
-            //if (entity.PlaceId == null)
-            //    return
-            //        new CharacterDetail
-            //        {
-            //            CharacterId = entity.CharacterId,
-            //            CharacterName = entity.CharacterName,
-            //            CharacterDescription = entity.CharacterDescription,
-            //            CharacterJob = entity.CharacterJob,
-            //            Inventory = entity.Inventory.Select(e => new InventoryListItem { CharacterId = e.CharacterId, InventoryId = e.InventoryId, ItemId = e.ItemId }).ToList(),
-            //            Items = entity.Inventory.Select(i => new ItemCharacterDetail
-            //            {
-            //                ItemName = i.Item.ItemName,
-            //            }).ToList(),
-            //        };
-            //else
                 return
                     new CharacterDetail
                     {
@@ -86,14 +71,14 @@ namespace Spongebob.Service
                         CharacterDescription = entity.CharacterDescription,
                         CharacterJob = entity.CharacterJob,
 
-                        //Hangouts = entity.Hangouts.Select(e => new HangoutsListItem { CharacterId = e.CharacterId, HangoutsId = e.HangoutsId, PlaceId = e.PlaceId }).ToList(),
+                       
                         Places = entity.Hangouts.Select(i => new Models.Place.PlaceCharacterDetail
                         {
                             PlaceId = i.Place.PlaceId,
                             PlaceName = i.Place.PlaceName,
                         }).ToList(),
 
-                        //Inventory = entity.Inventory.Select(e => new InventoryListItem { CharacterId = e.CharacterId, InventoryId = e.InventoryId, ItemId = e.ItemId }).ToList(),
+                     
                         Items = entity.Inventory.Select(i => new ItemCharacterDetail
                         {
                             ItemId = i.Item.ItemId,
@@ -114,8 +99,6 @@ namespace Spongebob.Service
             entity.CharacterName = model.CharacterName;
             entity.CharacterDescription = model.CharacterDescription;
             entity.CharacterJob = model.CharacterJob;
-            //entity.PlaceId = model.PlaceId;
-            //entity.InventoryId = model.InventoryId;
 
             return ctx.SaveChanges() == 1;
         }

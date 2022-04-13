@@ -21,6 +21,7 @@ namespace Spongebob.Service
             var entity =
                 new Hangouts()
                 {
+                    UserId = _userId,
                     CharacterId = model.CharacterId,
                     PlaceId = model.PlaceId,
 
@@ -54,23 +55,23 @@ namespace Spongebob.Service
             }
         }
 
-        public HangoutsDetail GetHangoutsById(int id)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity =
-                    ctx
-                    .Hangouts
-                    .Single(e => e.HangoutsId == id && e.UserId == _userId);
-                return
-                    new HangoutsDetail
-                    {
-                        PlaceId = entity.PlaceId,
-                        HangoutsId = entity.HangoutsId,
-                        CharacterId = entity.CharacterId,
-                    };
-            }
-        }
+        //public HangoutsDetail GetHangoutsById(int id)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var entity =
+        //            ctx
+        //            .Hangouts
+        //            .Single(e => e.HangoutsId == id && e.UserId == _userId);
+        //        return
+        //            new HangoutsDetail
+        //            {
+        //                PlaceId = entity.PlaceId,
+        //                HangoutsId = entity.HangoutsId,
+        //                CharacterId = entity.CharacterId,
+        //            };
+        //    }
+        //}
 
         public bool UpdateHangouts(HangoutsEdit model)
         {
