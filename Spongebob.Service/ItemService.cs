@@ -41,7 +41,7 @@ namespace Spongebob.Service
                 var query =
                     ctx
                     .Items
-                    .Where(e => e.UserId == _userId)
+                    //.Where(e => e.UserId == _userId)
                     .Select(
                         e =>
                         new ItemListItem
@@ -63,7 +63,7 @@ namespace Spongebob.Service
                 var entity =
                     ctx
                     .Items
-                    .Single(e => e.ItemId == id && e.UserId == _userId);
+                    .Single(e => e.ItemId == id);
                 return
                     new ItemDetail
                     {

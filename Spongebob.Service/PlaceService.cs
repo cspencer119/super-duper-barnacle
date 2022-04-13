@@ -34,7 +34,9 @@ namespace Spongebob.Service
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query = ctx.Places.Where(e => e.UserId == _userId).Select(e => new PlaceListItem { PlaceId = e.PlaceId, PlaceName = e.PlaceName });
+                var query = ctx.Places
+                    //.Where(e => e.UserId == _userId)
+                    .Select(e => new PlaceListItem { PlaceId = e.PlaceId, PlaceName = e.PlaceName });
                 return query.ToArray();
             }
         }
@@ -43,7 +45,7 @@ namespace Spongebob.Service
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Places.Single(e => e.PlaceId == id && e.UserId == _userId);
+                var entity = ctx.Places.Single(e => e.PlaceId == id);
                 return
                     new PlaceDetail
                     {

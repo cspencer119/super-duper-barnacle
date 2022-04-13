@@ -41,7 +41,7 @@ namespace Spongebob.Service
                 var query =
                     ctx
                     .Hangouts
-                    .Where(e => e.UserId == _userId)
+                    //.Where(e => e.UserId == _userId)
                     .Select(
                         e =>
                         new HangoutsListItem
@@ -93,10 +93,11 @@ namespace Spongebob.Service
         {
             using (var ctx = new ApplicationDbContext())
             {
+                
                 var entity =
                     ctx
                     .Hangouts
-                    .Single(e => e.HangoutsId == hangoutsId && e.UserId == _userId);
+                    .Single(e => e.HangoutsId == hangoutsId  && _userId == null || e.HangoutsId == hangoutsId && e.UserId == _userId);
 
                 ctx.Hangouts.Remove(entity);
 

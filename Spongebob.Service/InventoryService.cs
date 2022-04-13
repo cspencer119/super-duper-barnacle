@@ -43,7 +43,7 @@ namespace Spongebob.Service
                 var query =
                     ctx
                     .Inventories
-                    .Where(e => e.UserId == _userId)
+                   // .Where(e => e.UserId == _userId)
                     .Select(
                         e =>
                         new InventoryListItem
