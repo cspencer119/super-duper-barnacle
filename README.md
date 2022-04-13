@@ -25,6 +25,9 @@ Spongebob.Data
 Update-Database
 ```
 
+## How to use
+-List of stuff here
+
 ## SpongebobAPI Authors
 - Hayden Linville
 - Cyrus Spencer
