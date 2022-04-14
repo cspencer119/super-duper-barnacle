@@ -18,7 +18,6 @@ namespace Spongebob.Service
         {
             _userId = userId;
         }
-
         public bool CreateCharacter(CharacterCreate model)
         {
             var entity =
@@ -72,6 +71,7 @@ namespace Spongebob.Service
                         CharacterJob = entity.CharacterJob,
 
 
+
                         Places = entity.Hangouts.Select(i => new Models.Place.PlaceCharacterDetail
                         {
                             PlaceId = i.Place.PlaceId,
@@ -87,20 +87,30 @@ namespace Spongebob.Service
                     };
             }
         }
-
+        //ticket48
         public bool UpdateCharacter(CharacterEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
+                var all = ctx.Characters.ToArray();
+                foreach (var c in all)
+                {
+                    if (c.CharacterId == model.CharacterId)
+                    {
 
-                var entity =
-                    ctx
-                    .Characters.Single(e => e.CharacterId == model.CharacterId);
-                entity.CharacterName = model.CharacterName;
-                entity.CharacterDescription = model.CharacterDescription;
-                entity.CharacterJob = model.CharacterJob;
 
-                return ctx.SaveChanges() == 1;
+
+                        var entity =
+                            ctx
+                            .Characters.Single(e => e.CharacterId == model.CharacterId);
+                        entity.CharacterName = model.CharacterName;
+                        entity.CharacterDescription = model.CharacterDescription;
+                        entity.CharacterJob = model.CharacterJob;
+
+                        return ctx.SaveChanges() >= 1;
+                    }
+                }
+                return false;
             }
         }
 
