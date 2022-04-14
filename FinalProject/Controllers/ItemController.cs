@@ -24,6 +24,10 @@ namespace FinalProject.Controllers
         {
             var iService = CreateItemService();
             var item = iService.GetItemById(id);
+            if (item == null)
+            {
+                return BadRequest("That item Id doesn't exist!");
+            }
             return Ok(item);
         }
         [Authorize]
@@ -36,7 +40,7 @@ namespace FinalProject.Controllers
             {
                 return InternalServerError();
             }
-            return Ok();
+            return Ok($"Item {item.ItemName} has been created!");
         }
 
 
@@ -47,9 +51,9 @@ namespace FinalProject.Controllers
             var iService = CreateItemService();
             if (!iService.EditItem(items))
             {
-                return InternalServerError();
+                return BadRequest("That Item Id doesn't exist!");
             }
-            return Ok();
+            return Ok($"You edited item {items.ItemId}!");
         }
         [Authorize]
         public IHttpActionResult Delete(int id)
@@ -57,9 +61,9 @@ namespace FinalProject.Controllers
             var iService = CreateItemServiceUserId();
 
             if (!iService.DeleteItem(id))
-                return BadRequest("You do not have access to delete Items in Seed list!");
+                return BadRequest("You do not have access to delete items in the seed list or other accounts!");
 
-            return Ok();
+            return Ok("You have successfully deleted the item!");
         }
 
         private ItemService CreateItemService()
