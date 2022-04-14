@@ -69,42 +69,42 @@
             context.Places.AddOrUpdate(x => x.PlaceId,
             new Place()
             {
-                PlaceId = 0,
+                PlaceId = 1,
                 PlaceName = "Bikini Bottom",
                 Address = "Bikini Atoll",
                 PlaceDescription = "The heartbeat of the area a thriving metropolis and houses nearly every character in the series."
             },
             new Place()
             {
-                PlaceId = 1,
+                PlaceId = 2,
                 PlaceName = "Pineapple",
                 Address = "124 Conch Street",
                 PlaceDescription = "A Pineapple under the see where Spongebob lives"
             },
             new Place()
             {
-                PlaceId = 2,
+                PlaceId = 3,
                 PlaceName = "Tiki Head",
                 Address = "122 Conch Street",
                 PlaceDescription = "A sunken Easter Island Head serving as Squidwards home."
             },
             new Place()
             {
-                PlaceId = 3,
+                PlaceId = 4,
                 PlaceName = "Krusty Krab",
                 Address = "831 Bottom Feeder Lane",
                 PlaceDescription = "The most popular restaurant in Bikini Bottom. Home of the Krabby Patty."
             },
             new Place()
             {
-                PlaceId = 4,
+                PlaceId = 5,
                 PlaceName = "Patricks Rock",
                 Address = "120 Conch Street",
                 PlaceDescription = "Patricks rock that serves, to varying degrees, as his 'house'."
             },
             new Place()
             {
-                PlaceId = 5,
+                PlaceId = 6,
                 PlaceName = "Goo Lagoon",
                 Address = "The Beach",
                 PlaceDescription = "The beach in Bikini Bottom."

@@ -89,9 +89,7 @@ namespace Spongebob.Service
             {
                 var items = ctx.Items.Where(e => e.ItemId == model.ItemId).ToArray();
                 foreach (var i in items)
-                {
-                    if (model != null)
-                    {
+                { 
                         var entity =
                         ctx
                         .Items
@@ -103,7 +101,6 @@ namespace Spongebob.Service
                         entity.ItemIsCool = model.ItemIsCool;
 
                         return ctx.SaveChanges() == 1;
-                    }
                 }
                 return false;
             }
