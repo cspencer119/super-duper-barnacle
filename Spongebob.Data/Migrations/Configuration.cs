@@ -114,67 +114,67 @@
                 new Hangouts()
                 {
                     HangoutsId = 1,
-                    PlaceId = 0,
-                    CharacterId = 1
-                },
-                new Hangouts()
-                {
-                    HangoutsId = 2,
                     PlaceId = 1,
                     CharacterId = 1
                 },
                 new Hangouts()
                 {
+                    HangoutsId = 2,
+                    PlaceId = 2,
+                    CharacterId = 1
+                },
+                new Hangouts()
+                {
                     HangoutsId = 3,
-                    PlaceId = 3,
+                    PlaceId = 4,
                     CharacterId = 1
                 },
                 new Hangouts()
                 {
                     HangoutsId = 4,
-                    PlaceId = 5,
+                    PlaceId = 6,
                     CharacterId = 1
                 },
                 new Hangouts()
                 {
                     HangoutsId = 5,
-                    PlaceId = 2,
+                    PlaceId = 3,
                     CharacterId = 2
                 },
                 new Hangouts()
                 {
                     HangoutsId = 6,
-                    PlaceId = 3,
+                    PlaceId = 4,
                     CharacterId = 2
                 },
                 new Hangouts()
                 {
                     HangoutsId = 7,
-                    PlaceId = 3,
+                    PlaceId = 4,
                     CharacterId = 3
                 },
                 new Hangouts()
                 {
                     HangoutsId = 8,
-                    PlaceId = 0,
+                    PlaceId = 1,
                     CharacterId = 3
                 },
                 new Hangouts()
                 {
                     HangoutsId = 9,
-                    PlaceId = 4,
+                    PlaceId = 5,
                     CharacterId = 4
                 },
                 new Hangouts()
                 {
                     HangoutsId = 10,
-                    PlaceId = 3,
+                    PlaceId = 4,
                     CharacterId = 4
                 },
                 new Hangouts()
                 {
                     HangoutsId = 11,
-                    PlaceId = 5,
+                    PlaceId = 6,
                     CharacterId = 5
                 });
 
@@ -185,7 +185,7 @@
                      ItemName = "Spatula",
                      ItemDescription = "Spongebobs cooking tool. Used for making krabby patties",
                      ItemIsCool = true,
-                     InventoryId = 1
+                     
                  },
                  new Item()
                  {
@@ -193,7 +193,7 @@
                      ItemName = "Bubble Wand",
                      ItemDescription = "Spongebobs bubble wand. Used for blowing all sorts of bubbles.",
                      ItemIsCool = true,
-                     InventoryId = 1
+                     
                  },
                  new Item()
                  {
@@ -201,7 +201,7 @@
                      ItemName = "Conch Shell",
                      ItemDescription = "A magic consh shell that answers all sorts of questions.",
                      ItemIsCool = true,
-                     InventoryId = 1
+                     
                  },
                  new Item()
                  {
@@ -209,7 +209,7 @@
                      ItemName = "Clarinet",
                      ItemDescription = "Squidward prized clarinet. He thinks he is rathe gifted.",
                      ItemIsCool = false,
-                     InventoryId = 2
+                     
                  },
                  new Item()
                  {
@@ -217,7 +217,7 @@
                      ItemName = "Canned Bread",
                      ItemDescription = "A prized delicacy among squids in and around Bikini Bottom",
                      ItemIsCool = false,
-                     InventoryId = 2
+                     
                  },
                  new Item()
                  {
@@ -225,7 +225,7 @@
                      ItemName = "Painting supplies",
                      ItemDescription = "Squidwards tools for making all of his uhhh 'art'.",
                      ItemIsCool = false,
-                     //InventoryId = 2
+                     
                  },
                  new Item()
                  {
