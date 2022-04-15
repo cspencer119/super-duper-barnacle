@@ -29,13 +29,15 @@ namespace FinalProject.Controllers
             var service = CreateHangoutsServiceUserId();
             if (!service.CreateHangouts(model))
                 return InternalServerError();
-            return Ok();
+            return Ok("Hangout has been created!");
         }
 
         public IHttpActionResult Get(int id)
         {
             var iService = CreateHangoutsService();
             var hangouts = iService.GetHangoutsById(id);
+            if (hangouts == null)
+                return BadRequest("That hangout Id doesn't exist!");
             return Ok(hangouts);
         }
 
