@@ -104,6 +104,7 @@ namespace Spongebob.Service
                         entity.ItemIsCool = model.ItemIsCool;
 
                         return ctx.SaveChanges() == 1;
+                    }
                 }
                 return false;
             }
