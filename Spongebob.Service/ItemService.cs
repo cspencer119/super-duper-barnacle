@@ -27,7 +27,6 @@ namespace Spongebob.Service
                     ItemDescription = model.ItemDescription,
                     ItemIsCool = model.ItemIsCool
                 };
-
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Items.Add(entity);
@@ -50,8 +49,7 @@ namespace Spongebob.Service
                             ItemName = e.ItemName,
                             ItemDescription = e.ItemDescription,
                             ItemIsCool = e.ItemIsCool
-                        }
-                        );
+                        });
                 return query.ToArray();
             }
         }
@@ -92,17 +90,14 @@ namespace Spongebob.Service
                 {
                     if (i.ItemId == model.ItemId)
                     {
-
                         var entity =
                             ctx
                             .Items
                             .Single(e => e.ItemId == model.ItemId);
-
                         entity.ItemId = model.ItemId;
                         entity.ItemName = model.ItemName;
                         entity.ItemDescription = model.ItemDescription;
                         entity.ItemIsCool = model.ItemIsCool;
-
                         return ctx.SaveChanges() == 1;
                     }
                 }
