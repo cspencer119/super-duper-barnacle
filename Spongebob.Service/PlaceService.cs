@@ -11,13 +11,11 @@ namespace Spongebob.Service
     public class PlaceService
     {
         private readonly Guid _userId;
-
         public PlaceService() { }
         public PlaceService(Guid userId)
         {
             _userId = userId;
         }
-
 
         public bool CreatePlace(PlaceCreate model)
         {
@@ -44,15 +42,26 @@ namespace Spongebob.Service
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Places.Single(e => e.PlaceId == id);
-                return
-                    new PlaceDetail
+                var places = ctx.Places.Where(e => e.PlaceId == id).ToArray();
+                foreach (var p in places)
+                {
+                    if (p.PlaceId == id)
                     {
-                        PlaceId = entity.PlaceId,
-                        PlaceName = entity.PlaceName,
-                        PlaceDescription = entity.PlaceDescription,
-                        Address = entity.Address
-                    };
+                        var entity =
+                            ctx
+                            .Places
+                            .Single(e => e.PlaceId == id);
+                        return
+                            new PlaceDetail
+                            {
+                                PlaceId = entity.PlaceId,
+                                PlaceName = entity.PlaceName,
+                                PlaceDescription = entity.PlaceDescription,
+                                Address = entity.Address
+                            };
+                    }
+                }
+                return null;
             }
         }
 
@@ -83,32 +92,24 @@ namespace Spongebob.Service
         {
             using (var ctx = new ApplicationDbContext())
             {
-
                 var userPlaces = ctx.Places.Where(e => e.UserId == _userId).ToArray();
                 foreach (var p in userPlaces)
                 {
                     if (p.PlaceId == placeId)
                     {
                         var entity = ctx.Places.Single(e => e.PlaceId == placeId && e.UserId == _userId);
-
                         var hang = ctx.Hangouts.Where(e => e.UserId == _userId).ToArray();
                         foreach (var hangout in hang)
                         {
                             if (hangout.PlaceId == placeId)
                                 ctx.Hangouts.Remove(hangout);
                         }
-
                         ctx.Places.Remove(entity);
                         return ctx.SaveChanges() >= 1;
                     }
-
                 }
                 return false;
             }
-
-
         }
-
-
     }
 }

@@ -25,19 +25,21 @@ namespace FinalProject.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-
             var service = CreatePlaceServiceUserId();
-
             if (!service.CreatePlace(model))
                 return InternalServerError();
 
-            return Ok();
+            return Ok($"You created {model.PlaceName}!");
         }
 
         public IHttpActionResult Get(int id)
         {
             var pService = CreatePlaceService();
             var place = pService.GetPlaceById(id);
+            if (place == null)
+            {
+                return BadRequest("That place id doesn't exist");
+            }
             return Ok(place);
         }
 
@@ -45,13 +47,14 @@ namespace FinalProject.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-
             var pService = CreatePlaceService();
-
             if (!pService.UpdatePlace(place))
-                return BadRequest("The PlaceId you provided does not exist");
+            {
+                return BadRequest("That Place Id doesn't exist!");
 
-            return Ok();
+            }
+
+            return Ok($"You edited place {place.PlaceId}!");
             
         }
         [Authorize]
@@ -62,7 +65,7 @@ namespace FinalProject.Controllers
             if (!pService.DeletePlace(id))
                 return BadRequest("You can only delete places that you have created. This place either does not exist or was not created by you!");
 
-            return Ok();
+            return Ok("You sucessfully deleted the place!");
             
         }
 
