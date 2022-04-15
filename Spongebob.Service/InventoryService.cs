@@ -10,15 +10,13 @@ namespace Spongebob.Service
 {
     public class InventoryService
     {
-
-
         private readonly Guid _userId;
-
         public InventoryService() { }
         public InventoryService(Guid userId)
         {
             _userId = userId;
         }
+
         public bool CreateInventory(InventoryCreate model)
         {
             var entity =
@@ -29,7 +27,6 @@ namespace Spongebob.Service
                     ItemId = model.ItemId,
 
                 };
-
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Inventories.Add(entity);
@@ -51,8 +48,7 @@ namespace Spongebob.Service
                             ItemId = e.ItemId,
                             InventoryId = e.InventoryId,
                             CharacterId = e.CharacterId,
-                        }
-                        );
+                        });
                 return query.ToArray();
             }
         }
@@ -86,12 +82,10 @@ namespace Spongebob.Service
                 {
                     if (i.InventoryId == model.InventoryId)
                     {
-
                         var entity =
                             ctx
                             .Inventories
                             .Single(e => e.InventoryId == model.InventoryId);
-
                         entity.ItemId = model.ItemId;
                         entity.InventoryId = model.InventoryId;
                         entity.CharacterId = model.CharacterId;
@@ -115,16 +109,12 @@ namespace Spongebob.Service
                             ctx
                             .Inventories
                             .Single(e => e.InventoryId == inventoryId && e.UserId == _userId);
-
                         ctx.Inventories.Remove(entity);
-
                         return ctx.SaveChanges() >= 1;
                     }
                 }
                 return false;
             }
         }
-
-
     }
 }

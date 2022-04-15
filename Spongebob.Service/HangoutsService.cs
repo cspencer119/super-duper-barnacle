@@ -17,6 +17,7 @@ namespace Spongebob.Service
         {
             _userId = userId;
         }
+
         public bool CreateHangouts(HangoutsCreate model)
         {
             var entity =
@@ -25,9 +26,7 @@ namespace Spongebob.Service
                     UserId = _userId,
                     CharacterId = model.CharacterId,
                     PlaceId = model.PlaceId,
-
                 };
-
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Hangouts.Add(entity);
@@ -49,8 +48,7 @@ namespace Spongebob.Service
                             PlaceId = e.PlaceId,
                             HangoutsId = e.HangoutsId,
                             CharacterId = e.CharacterId,
-                        }
-                        );
+                        });
                 return query.ToArray();
             }
         }
@@ -84,12 +82,10 @@ namespace Spongebob.Service
                 {
                     if (h.HangoutsId == model.HangoutsId)
                     {
-
                         var entity =
                             ctx
                             .Hangouts
                             .Single(e => e.HangoutsId == model.HangoutsId);
-
                         entity.PlaceId = model.PlaceId;
                         entity.HangoutsId = model.HangoutsId;
                         entity.CharacterId = model.CharacterId;
@@ -113,9 +109,7 @@ namespace Spongebob.Service
                             ctx
                             .Hangouts
                             .Single(e => e.HangoutsId == hangoutsId && e.UserId == _userId);
-
                         ctx.Hangouts.Remove(entity);
-
                         return ctx.SaveChanges() >= 1;
                     }
                 }
