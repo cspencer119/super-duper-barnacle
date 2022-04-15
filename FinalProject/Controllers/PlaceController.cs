@@ -49,7 +49,7 @@ namespace FinalProject.Controllers
             var pService = CreatePlaceService();
 
             if (!pService.UpdatePlace(place))
-                return InternalServerError();
+                return BadRequest("The PlaceId you provided does not exist");
 
             return Ok();
             
@@ -60,7 +60,7 @@ namespace FinalProject.Controllers
             var pService = CreatePlaceServiceUserId();
 
             if (!pService.DeletePlace(id))
-                return BadRequest("You do not have access to delete Places in Seed list!");
+                return BadRequest("You can only delete places that you have created. This place either does not exist or was not created by you!");
 
             return Ok();
             

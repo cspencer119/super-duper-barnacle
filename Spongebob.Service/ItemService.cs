@@ -78,17 +78,26 @@ namespace Spongebob.Service
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity =
-                    ctx
-                    .Items
-                    .Single(e => e.ItemId == model.ItemId);
+                var all = ctx.Items.ToArray();
+                foreach (var i in all)
+                {
+                    if (i.ItemId == model.ItemId)
+                    {
 
-                entity.ItemId = model.ItemId;
-                entity.ItemName = model.ItemName;
-                entity.ItemDescription = model.ItemDescription;
-                entity.ItemIsCool = model.ItemIsCool;
+                        var entity =
+                            ctx
+                            .Items
+                            .Single(e => e.ItemId == model.ItemId);
 
-                return ctx.SaveChanges() == 1;
+                        entity.ItemId = model.ItemId;
+                        entity.ItemName = model.ItemName;
+                        entity.ItemDescription = model.ItemDescription;
+                        entity.ItemIsCool = model.ItemIsCool;
+
+                        return ctx.SaveChanges() == 1;
+                    }
+                }
+                return false;
             }
         }
 

@@ -47,7 +47,8 @@ namespace FinalProject.Controllers
             var iService = CreateItemService();
             if (!iService.EditItem(items))
             {
-                return InternalServerError();
+                return BadRequest("The ItemId you provided does not exist");
+
             }
             return Ok();
         }
@@ -57,7 +58,7 @@ namespace FinalProject.Controllers
             var iService = CreateItemServiceUserId();
 
             if (!iService.DeleteItem(id))
-                return BadRequest("You do not have access to delete Items in Seed list!");
+                return BadRequest("You can only delete Items that you have created. This Item either does not exist or was not created by you!");
 
             return Ok();
         }
