@@ -27,13 +27,15 @@ namespace FinalProject.Controllers
             var service = CreateInventoryServiceUserId();
             if (!service.CreateInventory(model))
                 return InternalServerError();
-            return Ok();
+            return Ok("Inventory has been created!");
         }
 
         public IHttpActionResult Get(int id)
         {
             var iService = CreateInventoryService();
             var inventory = iService.GetInventoryById(id);
+            if (inventory == null)
+                return BadRequest("That inventory Id doesn't exist!");
             return Ok(inventory);
         }
 
