@@ -47,8 +47,8 @@ namespace FinalProject.Controllers
                 return BadRequest(ModelState);
             var iService = CreateHangoutsService();
             if (!iService.UpdateHangouts(hangouts))
-                return BadRequest("The ItemId you provided does not exist");
-            return Ok();
+                return BadRequest("The HangoutsId you provided does not exist");
+            return Ok($"You have sucessfully updated hangout {hangouts.HangoutsId}!");
         }
 
         [Authorize]
@@ -56,8 +56,8 @@ namespace FinalProject.Controllers
         {
             var iService = CreateHangoutsServiceUserId();
             if (!iService.DeleteHangouts(id))
-                return BadRequest("You can only delete Items that you have created. This Item either does not exist or was not created by you!");
-            return Ok();
+                return BadRequest("You can only delete Hangouts that you have created. This Hangout either does not exist or was not created by you!");
+            return Ok("You have deleted the hangout!");
         }
 
         private HangoutsService CreateHangoutsService()
