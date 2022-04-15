@@ -63,7 +63,7 @@ namespace FinalProject.Controllers
             var cService = CreateCharacterService();
 
             if (!cService.UpdateCharacter(character))
-                return InternalServerError();
+                return BadRequest("The CharacterId you provided does not exist");
 
             return Ok();
         }
@@ -74,7 +74,7 @@ namespace FinalProject.Controllers
             var cService = CreateCharacterServiceUserId();
 
             if (!cService.DeleteCharacter(id))
-                return BadRequest("You do not have access to delete Items in Seed list!");
+                return BadRequest("You can only delete Character that you have created. This Character either does not exist or was not created by you!");
 
             return Ok();
 

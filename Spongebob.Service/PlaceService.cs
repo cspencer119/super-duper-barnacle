@@ -69,21 +69,19 @@ namespace Spongebob.Service
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var places = ctx.Places.Where(e => e.PlaceId == model.PlaceId).ToArray();
-                foreach (var p in places)
+                var all = ctx.Places.ToArray();
+                foreach (var p in all)
                 {
-                    if (model != null)
+                    if (p.PlaceId == model.PlaceId)
                     {
-                        var entity =
-                        ctx
-                        .Places
-                        .Single(e => e.PlaceId == model.PlaceId);
+
+                        var entity = ctx.Places.Single(e => e.PlaceId == model.PlaceId);
 
                         entity.PlaceName = model.PlaceName;
                         entity.PlaceDescription = model.PlaceDescription;
                         entity.Address = model.Address;
 
-                        return ctx.SaveChanges() == 1;
+                        return ctx.SaveChanges() >= 1;
                     }
                 }
                 return false;

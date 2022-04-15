@@ -50,7 +50,7 @@ namespace FinalProject.Controllers
             var iService = CreateHangoutsService();
 
             if (!iService.UpdateHangouts(hangouts))
-                return InternalServerError();
+                return BadRequest("The ItemId you provided does not exist");
 
             return Ok();
 
@@ -61,7 +61,7 @@ namespace FinalProject.Controllers
             var iService = CreateHangoutsServiceUserId();
 
             if (!iService.DeleteHangouts(id))
-                return BadRequest("You do not have access to delete Hangouts in Seed list!");
+                return BadRequest("You can only delete Items that you have created. This Item either does not exist or was not created by you!");
 
             return Ok();
 

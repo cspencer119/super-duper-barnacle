@@ -87,15 +87,16 @@ namespace Spongebob.Service
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var items = ctx.Items.Where(e => e.ItemId == model.ItemId).ToArray();
-                foreach (var i in items)
+                var all = ctx.Items.ToArray();
+                foreach (var i in all)
                 {
-                    if (model != null)
+                    if (i.ItemId == model.ItemId)
                     {
+
                         var entity =
-                        ctx
-                        .Items
-                        .Single(e => e.ItemId == model.ItemId);
+                            ctx
+                            .Items
+                            .Single(e => e.ItemId == model.ItemId);
 
                         entity.ItemId = model.ItemId;
                         entity.ItemName = model.ItemName;

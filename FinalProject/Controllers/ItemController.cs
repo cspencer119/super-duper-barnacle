@@ -61,7 +61,7 @@ namespace FinalProject.Controllers
             var iService = CreateItemServiceUserId();
 
             if (!iService.DeleteItem(id))
-                return BadRequest("You do not have access to delete items in the seed list or other accounts!");
+                return BadRequest("You can only delete Items that you have created. This Item either does not exist or was not created by you!");
 
             return Ok("You have successfully deleted the item!");
         }

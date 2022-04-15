@@ -63,7 +63,7 @@ namespace FinalProject.Controllers
             var pService = CreatePlaceServiceUserId();
 
             if (!pService.DeletePlace(id))
-                return BadRequest("You do not have access to delete places in the seed list or other accounts!");
+                return BadRequest("You can only delete places that you have created. This place either does not exist or was not created by you!");
 
             return Ok("You sucessfully deleted the place!");
             
