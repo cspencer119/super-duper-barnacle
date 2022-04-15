@@ -49,7 +49,7 @@ namespace FinalProject.Controllers
             var iService = CreateInventoryService();
 
             if (!iService.UpdateInventory(inventory))
-                return InternalServerError();
+                return BadRequest("The InventoryId you provided does not exist");
 
             return Ok();
 
@@ -60,7 +60,7 @@ namespace FinalProject.Controllers
             var iService = CreateInventoryServiceUserId();
 
             if (!iService.DeleteInventory(id))
-                return BadRequest("You do not have access to delete Inventories in Seed list!");
+                return BadRequest("You can only delete Inventories that you have created. This Inventory either does not exist or was not created by you!");
 
             return Ok();
 
