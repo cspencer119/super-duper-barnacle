@@ -11,7 +11,7 @@ using System.Net.Http;
 using System.Web.Http;
 
 namespace FinalProject.Controllers
-{ 
+{
     public class HangoutsController : ApiController
     {
         public IHttpActionResult Get()
@@ -28,7 +28,7 @@ namespace FinalProject.Controllers
                 return BadRequest(ModelState);
             var service = CreateHangoutsServiceUserId();
             if (!service.CreateHangouts(model))
-                return InternalServerError();
+                return BadRequest("An Id you provided doesn't exist");
             return Ok("Hangout has been created!");
         }
 
@@ -47,8 +47,9 @@ namespace FinalProject.Controllers
                 return BadRequest(ModelState);
             var iService = CreateHangoutsService();
             if (!iService.UpdateHangouts(hangouts))
-                return BadRequest("The HangoutsId you provided does not exist");
+                return BadRequest("The HangoutId/CharacterId/PlaceId you provided does not exist!");
             return Ok($"You have sucessfully updated hangout {hangouts.HangoutsId}!");
+
         }
 
         [Authorize]

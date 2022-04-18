@@ -19,21 +19,33 @@ namespace Spongebob.Service
 
         public bool CreateInventory(InventoryCreate model)
         {
-            var entity =
-                new Inventory()
-                {
-                    UserId = _userId,
-                    CharacterId = model.CharacterId,
-                    ItemId = model.ItemId,
-
-                };
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Inventories.Add(entity);
-                return ctx.SaveChanges() == 1;
+                var chars = ctx.Characters.ToArray();
+                var items = ctx.Items.ToArray();
+                foreach (var c in chars)
+                {
+                    if (c.CharacterId == model.CharacterId)
+                    {
+                        foreach (var i in items)
+                        {
+                            if (i.ItemId == model.ItemId)
+                            {
+                                var entity = new Inventory()
+                                {
+                                    UserId = _userId,
+                                    CharacterId = model.CharacterId,
+                                    ItemId = model.ItemId,
+                                };
+                                ctx.Inventories.Add(entity);
+                                return ctx.SaveChanges() == 1;
+                            }
+                        }
+                    }
+                }
+                return false;
             }
         }
-
         public IEnumerable<InventoryListItem> GetInventory()
         {
             using (var ctx = new ApplicationDbContext())
@@ -94,10 +106,24 @@ namespace Spongebob.Service
                             ctx
                             .Inventories
                             .Single(e => e.InventoryId == model.InventoryId);
-                        entity.ItemId = model.ItemId;
-                        entity.InventoryId = model.InventoryId;
-                        entity.CharacterId = model.CharacterId;
-                        return ctx.SaveChanges() >= 1;
+                        var chars = ctx.Characters.ToArray();
+                        var items = ctx.Items.ToArray();
+                        foreach (var c in chars)
+                        {
+                            if (c.CharacterId == model.CharacterId)
+                            {
+                                foreach (var item in items)
+                                {
+                                    if (item.ItemId == model.ItemId)
+                                    {
+                                        entity.InventoryId = model.InventoryId;
+                                        entity.CharacterId = model.CharacterId;
+                                        entity.ItemId = model.ItemId;
+                                        return ctx.SaveChanges() >= 1;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
                 return false;

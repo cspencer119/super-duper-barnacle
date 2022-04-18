@@ -20,17 +20,31 @@ namespace Spongebob.Service
 
         public bool CreateHangouts(HangoutsCreate model)
         {
-            var entity =
-                new Hangouts()
-                {
-                    UserId = _userId,
-                    CharacterId = model.CharacterId,
-                    PlaceId = model.PlaceId,
-                };
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Hangouts.Add(entity);
-                return ctx.SaveChanges() == 1;
+                var chars = ctx.Characters.ToArray();
+                var places = ctx.Places.ToArray();
+                foreach (var c in chars)
+                {
+                    if (c.CharacterId == model.CharacterId)
+                    {
+                        foreach (var p in places)
+                        {
+                            if (p.PlaceId == model.PlaceId)
+                            {
+                                var entity = new Hangouts()
+                                {
+                                    UserId = _userId,
+                                    CharacterId = model.CharacterId,
+                                    PlaceId = model.PlaceId,
+                                };
+                                ctx.Hangouts.Add(entity);
+                                return ctx.SaveChanges() == 1;
+                            }
+                        }
+                    }
+                }
+                return false;
             }
         }
 
@@ -81,48 +95,62 @@ namespace Spongebob.Service
             }
         }
 
-    public bool UpdateHangouts(HangoutsEdit model)
-    {
-        using (var ctx = new ApplicationDbContext())
+        public bool UpdateHangouts(HangoutsEdit model)
         {
-            var all = ctx.Hangouts.ToArray();
-            foreach (var h in all)
+            using (var ctx = new ApplicationDbContext())
             {
-                if (h.HangoutsId == model.HangoutsId)
+                var all = ctx.Hangouts.ToArray();
+                foreach (var h in all)
                 {
-                    var entity =
-                        ctx
-                        .Hangouts
-                        .Single(e => e.HangoutsId == model.HangoutsId);
-                    entity.PlaceId = model.PlaceId;
-                    entity.HangoutsId = model.HangoutsId;
-                    entity.CharacterId = model.CharacterId;
-                    return ctx.SaveChanges() >= 1;
+                    if (h.HangoutsId == model.HangoutsId)
+                    {
+                        var entity =
+                            ctx
+                            .Hangouts
+                            .Single(e => e.HangoutsId == model.HangoutsId);
+                        var chars = ctx.Characters.ToArray();
+                        var places = ctx.Places.ToArray();
+                        foreach (var c in chars)
+                        {
+                            if (c.CharacterId == model.CharacterId)
+                            {
+                                foreach (var place in places)
+                                {
+                                    if (place.PlaceId == model.PlaceId)
+                                    {
+                                        entity.HangoutsId = model.HangoutsId;
+                                        entity.CharacterId = model.CharacterId;
+                                        entity.PlaceId = model.PlaceId;
+                                        return ctx.SaveChanges() >= 1;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
+                return false;
             }
-            return false;
         }
-    }
 
-    public bool DeleteHangouts(int hangoutsId)
-    {
-        using (var ctx = new ApplicationDbContext())
+        public bool DeleteHangouts(int hangoutsId)
         {
-            var userHangout = ctx.Hangouts.Where(e => e.UserId == _userId).ToArray();
-            foreach (var h in userHangout)
+            using (var ctx = new ApplicationDbContext())
             {
-                if (h.HangoutsId == hangoutsId)
+                var userHangout = ctx.Hangouts.Where(e => e.UserId == _userId).ToArray();
+                foreach (var h in userHangout)
                 {
-                    var entity =
-                        ctx
-                        .Hangouts
-                        .Single(e => e.HangoutsId == hangoutsId && e.UserId == _userId);
-                    ctx.Hangouts.Remove(entity);
-                    return ctx.SaveChanges() >= 1;
+                    if (h.HangoutsId == hangoutsId)
+                    {
+                        var entity =
+                            ctx
+                            .Hangouts
+                            .Single(e => e.HangoutsId == hangoutsId && e.UserId == _userId);
+                        ctx.Hangouts.Remove(entity);
+                        return ctx.SaveChanges() >= 1;
+                    }
                 }
+                return false;
             }
-            return false;
         }
     }
-}
 }

@@ -9,7 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 
 namespace FinalProject.Controllers
-{  
+{
     public class InventoryController : ApiController
     {
         public IHttpActionResult Get()
@@ -26,7 +26,7 @@ namespace FinalProject.Controllers
                 return BadRequest(ModelState);
             var service = CreateInventoryServiceUserId();
             if (!service.CreateInventory(model))
-                return InternalServerError();
+                return BadRequest("An Id you provided doesn't exist");
             return Ok("Inventory has been created!");
         }
 
@@ -45,8 +45,11 @@ namespace FinalProject.Controllers
                 return BadRequest(ModelState);
             var iService = CreateInventoryService();
             if (!iService.UpdateInventory(inventory))
-                return BadRequest("The InventoryId you provided does not exist");
+
+                return BadRequest("The InventoryId/CharacterId/ItemId you provided does not exist!");
+
             return Ok($"You have sucussfully updated inventory {inventory.InventoryId}!");
+
         }
 
         [Authorize]
