@@ -27,14 +27,15 @@ Update-Database
 ```
 
 ## How to use
-1. First make an account with an email and password (the password must have at least 6 characters, a capital letter, a number, and a special character)
+1. First access the api either by Swagger or by Postman
+```sh
+https://localhost:Your#Here/swagger
+```
+2. Next make an account with an email and password (the password must have at least 6 characters, a capital letter, a number, and a special character)
 ```sh
 https://localhost:Your#Here/api/Account/Register
 ```
-2. Obtain a bearer token to have access to Posting, Deleting, and updating various parts of the api
-```sh
-https://localhost:Your#Here/token
-```
+3. Obtain a bearer token to have access to Posting, Deleting, and updating various parts of the api
 - Within the api you can look up and update the contents within seed list but not delete any of them
 - With the account you made you can do a full crud of the api for contents you made but not other accounts created
 - With other accounts content you can only look up and update the their contents they made but not delete any of them
