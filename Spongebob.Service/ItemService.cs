@@ -22,6 +22,7 @@ namespace Spongebob.Service
             var entity =
                 new Item()
                 {
+                    IsSeedList = false,
                     UserId = _userId,
                     ItemName = model.ItemName,
                     ItemDescription = model.ItemDescription,
@@ -45,6 +46,7 @@ namespace Spongebob.Service
                         e =>
                         new ItemListItem
                         {
+                            IsSeedList =e.IsSeedList,
                             ItemId = e.ItemId,
                             ItemName = e.ItemName,
                             ItemDescription = e.ItemDescription,
@@ -70,6 +72,7 @@ namespace Spongebob.Service
                         return
                             new ItemDetail
                             {
+                                IsSeedList =entity.IsSeedList,
                                 ItemId = entity.ItemId,
                                 ItemName = entity.ItemName,
                                 ItemDescription = entity.ItemDescription,

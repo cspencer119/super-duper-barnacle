@@ -33,6 +33,7 @@ namespace Spongebob.Service
                             {
                                 var entity = new Inventory()
                                 {
+                                    IsSeedList =false,
                                     UserId = _userId,
                                     CharacterId = model.CharacterId,
                                     ItemId = model.ItemId,
@@ -57,6 +58,7 @@ namespace Spongebob.Service
                         e =>
                         new InventoryListItem
                         {
+                            IsSeedList =e.IsSeedList,
                             ItemId = e.ItemId,
                             InventoryId = e.InventoryId,
                             CharacterId = e.CharacterId,
@@ -81,6 +83,7 @@ namespace Spongebob.Service
                         return
                             new InventoryDetail
                             {
+                                IsSeedList = entity.IsSeedList,
                                 InventoryId = entity.InventoryId,
                                 CharacterId = entity.CharacterId,
                                 Character = entity.Character.CharacterName,

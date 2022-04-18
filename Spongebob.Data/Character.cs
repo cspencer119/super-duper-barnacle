@@ -21,7 +21,8 @@ namespace Spongebob.Data
         [Required]
         public string CharacterJob { get; set; }
 
-       
+        public bool IsSeedList { get; set; }
+
         public virtual List<Hangouts> Hangouts { get; set; }
 
         public virtual List<Inventory> Inventory { get; set; }

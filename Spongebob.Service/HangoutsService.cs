@@ -34,6 +34,7 @@ namespace Spongebob.Service
                             {
                                 var entity = new Hangouts()
                                 {
+                                    IsSeedList = false,
                                     UserId = _userId,
                                     CharacterId = model.CharacterId,
                                     PlaceId = model.PlaceId,
@@ -59,6 +60,7 @@ namespace Spongebob.Service
                         e =>
                         new HangoutsListItem
                         {
+                            IsSeedList = e.IsSeedList,
                             PlaceId = e.PlaceId,
                             HangoutsId = e.HangoutsId,
                             CharacterId = e.CharacterId,
@@ -82,7 +84,7 @@ namespace Spongebob.Service
                             .Single(e => e.HangoutsId == id && e.UserId == _userId);
                         return
                             new HangoutsDetail
-                            {
+                            { IsSeedList =entity.IsSeedList,
                                 HangoutsId = entity.HangoutsId,
                                 CharacterId = entity.CharacterId,
                                 CharacterName = entity.Character.CharacterName,

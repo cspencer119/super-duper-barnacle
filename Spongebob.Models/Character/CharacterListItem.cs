@@ -9,6 +9,7 @@ namespace Spongebob.Models
 {
     public class CharacterListItem
     {
+        public bool IsSeedList { get; set; }
         [Display(Name = "Character Id")]
         public int CharacterId { get; set; }
         [Display(Name = "Character Name")]

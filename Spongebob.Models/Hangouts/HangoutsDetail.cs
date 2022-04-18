@@ -8,6 +8,7 @@ namespace Spongebob.Models.Hangouts
 {
     public class HangoutsDetail
     {
+        public bool IsSeedList { get; set; }
         public int HangoutsId { get; set; }
         public int PlaceId { get; set; }
         public string PlaceName { get; set; }

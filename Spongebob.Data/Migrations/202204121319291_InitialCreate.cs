@@ -18,7 +18,8 @@
                         CharacterJob = c.String(nullable: false),
                         PlaceId = c.Int(),
                         InventoryId = c.Int(),
-                    })
+
+                })
                 .PrimaryKey(t => t.CharacterId)
                 .ForeignKey("dbo.Place", t => t.PlaceId)
                 .Index(t => t.PlaceId);
@@ -31,7 +32,8 @@
                         UserId = c.Guid(nullable: false),
                         ItemId = c.Int(nullable: false),
                         CharacterId = c.Int(nullable: false),
-                    })
+                    
+                })
                 .PrimaryKey(t => t.InventoryId)
                 .ForeignKey("dbo.Character", t => t.CharacterId, cascadeDelete: true)
                 .ForeignKey("dbo.Item", t => t.ItemId, cascadeDelete: true)
@@ -47,6 +49,7 @@
                         ItemName = c.String(nullable: false),
                         ItemDescription = c.String(nullable: false),
                         ItemIsCool = c.Boolean(nullable: false),
+                        
                     })
                 .PrimaryKey(t => t.ItemId);
             
@@ -59,7 +62,8 @@
                         PlaceName = c.String(nullable: false),
                         PlaceDescription = c.String(nullable: false),
                         Address = c.String(nullable: false),
-                    })
+                    
+                })
                 .PrimaryKey(t => t.PlaceId);
             
             CreateTable(
