@@ -53,6 +53,7 @@ namespace Spongebob.Service
             }
 
         }
+ 
 
         public CharacterDetail GetCharacterById(int characterID)
         {
@@ -87,7 +88,7 @@ namespace Spongebob.Service
                     };
             }
         }
-        //ticket48
+
         public bool UpdateCharacter(CharacterEdit model)
         {
             using (var ctx = new ApplicationDbContext())
