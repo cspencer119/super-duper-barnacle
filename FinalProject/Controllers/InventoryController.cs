@@ -45,8 +45,11 @@ namespace FinalProject.Controllers
                 return BadRequest(ModelState);
             var iService = CreateInventoryService();
             if (!iService.UpdateInventory(inventory))
+
                 return BadRequest("The InventoryId/CharacterId/ItemId you provided does not exist!");
-            return Ok("Inventory has been updated!");
+
+            return Ok($"You have sucussfully updated inventory {inventory.InventoryId}!");
+
         }
 
         [Authorize]
@@ -55,7 +58,7 @@ namespace FinalProject.Controllers
             var iService = CreateInventoryServiceUserId();
             if (!iService.DeleteInventory(id))
                 return BadRequest("You can only delete Inventories that you have created. This Inventory either does not exist or was not created by you!");
-            return Ok("Inventory has been deleted!");
+            return Ok("You have deleted the inventory!");
         }
 
         private InventoryService CreateInventoryService()
