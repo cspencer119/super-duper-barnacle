@@ -17,21 +17,34 @@ namespace Spongebob.Service
         {
             _userId = userId;
         }
+
         public bool CreateHangouts(HangoutsCreate model)
         {
-            var entity =
-                new Hangouts()
-                {
-                    UserId = _userId,
-                    CharacterId = model.CharacterId,
-                    PlaceId = model.PlaceId,
-
-                };
-
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Hangouts.Add(entity);
-                return ctx.SaveChanges() == 1;
+                var chars = ctx.Characters.ToArray();
+                var places = ctx.Places.ToArray();
+                foreach (var c in chars)
+                {
+                    if (c.CharacterId == model.CharacterId)
+                    {
+                        foreach (var p in places)
+                        {
+                            if (p.PlaceId == model.PlaceId)
+                            {
+                                var entity = new Hangouts()
+                                {
+                                    UserId = _userId,
+                                    CharacterId = model.CharacterId,
+                                    PlaceId = model.PlaceId,
+                                };
+                                ctx.Hangouts.Add(entity);
+                                return ctx.SaveChanges() == 1;
+                            }
+                        }
+                    }
+                }
+                return false;
             }
         }
 
@@ -49,8 +62,7 @@ namespace Spongebob.Service
                             PlaceId = e.PlaceId,
                             HangoutsId = e.HangoutsId,
                             CharacterId = e.CharacterId,
-                        }
-                        );
+                        });
                 return query.ToArray();
             }
         }
@@ -59,19 +71,27 @@ namespace Spongebob.Service
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity =
-                    ctx
-                    .Hangouts
-                    .Single(e => e.HangoutsId == id && e.UserId == _userId);
-                return
-                    new HangoutsDetail
+                var hangouts = ctx.Hangouts.Where(e => e.HangoutsId == id).ToArray();
+                foreach (var h in hangouts)
+                {
+                    if (h.HangoutsId == id)
                     {
-                        HangoutsId = entity.HangoutsId,
-                        CharacterId = entity.CharacterId,
-                        CharacterName = entity.Character.CharacterName,
-                        PlaceId = entity.PlaceId,
-                        PlaceName = entity.Place.PlaceName
-                    };
+                        var entity =
+                            ctx
+                            .Hangouts
+                            .Single(e => e.HangoutsId == id && e.UserId == _userId);
+                        return
+                            new HangoutsDetail
+                            {
+                                HangoutsId = entity.HangoutsId,
+                                CharacterId = entity.CharacterId,
+                                CharacterName = entity.Character.CharacterName,
+                                PlaceId = entity.PlaceId,
+                                PlaceName = entity.Place.PlaceName
+                            };
+                    }
+                }
+                return null;
             }
         }
 
@@ -84,16 +104,28 @@ namespace Spongebob.Service
                 {
                     if (h.HangoutsId == model.HangoutsId)
                     {
-
                         var entity =
                             ctx
                             .Hangouts
                             .Single(e => e.HangoutsId == model.HangoutsId);
-
-                        entity.PlaceId = model.PlaceId;
-                        entity.HangoutsId = model.HangoutsId;
-                        entity.CharacterId = model.CharacterId;
-                        return ctx.SaveChanges() >= 1;
+                        var chars = ctx.Characters.ToArray();
+                        var places = ctx.Places.ToArray();
+                        foreach (var c in chars)
+                        {
+                            if (c.CharacterId == model.CharacterId)
+                            {
+                                foreach (var place in places)
+                                {
+                                    if (place.PlaceId == model.PlaceId)
+                                    {
+                                        entity.HangoutsId = model.HangoutsId;
+                                        entity.CharacterId = model.CharacterId;
+                                        entity.PlaceId = model.PlaceId;
+                                        return ctx.SaveChanges() >= 1;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
                 return false;
@@ -113,9 +145,7 @@ namespace Spongebob.Service
                             ctx
                             .Hangouts
                             .Single(e => e.HangoutsId == hangoutsId && e.UserId == _userId);
-
                         ctx.Hangouts.Remove(entity);
-
                         return ctx.SaveChanges() >= 1;
                     }
                 }

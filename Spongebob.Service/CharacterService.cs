@@ -18,6 +18,7 @@ namespace Spongebob.Service
         {
             _userId = userId;
         }
+
         public bool CreateCharacter(CharacterCreate model)
         {
             var entity =
@@ -26,9 +27,7 @@ namespace Spongebob.Service
                     UserId = _userId,
                     CharacterName = model.CharacterName,
                     CharacterDescription = model.CharacterDescription,
-
                     CharacterJob = model.CharacterJob
-
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -51,7 +50,6 @@ namespace Spongebob.Service
                     });
                 return query.ToArray();
             }
-
         }
  
 
@@ -59,33 +57,33 @@ namespace Spongebob.Service
         {
             using (var ctx = new ApplicationDbContext())
             {
-
-                var entity =
-                    ctx
-                    .Characters.Single(e => e.CharacterId == characterID);
-                return
-                    new CharacterDetail
+                var chars = ctx.Characters.Where(e => e.CharacterId == characterID).ToArray();
+                foreach (var c in chars)
+                {
+                    if (c.CharacterId == characterID)
                     {
-                        CharacterId = entity.CharacterId,
-                        CharacterName = entity.CharacterName,
-                        CharacterDescription = entity.CharacterDescription,
-                        CharacterJob = entity.CharacterJob,
-
-
-
-                        Places = entity.Hangouts.Select(i => new Models.Place.PlaceCharacterDetail
-                        {
-                            PlaceId = i.Place.PlaceId,
-                            PlaceName = i.Place.PlaceName,
-                        }).ToList(),
-
-
-                        Items = entity.Inventory.Select(i => new ItemCharacterDetail
-                        {
-                            ItemId = i.Item.ItemId,
-                            ItemName = i.Item.ItemName,
-                        }).ToList(),
-                    };
+                        var entity = ctx.Characters.Single(e => e.CharacterId == characterID);
+                        return
+                            new CharacterDetail
+                            {
+                                CharacterId = entity.CharacterId,
+                                CharacterName = entity.CharacterName,
+                                CharacterDescription = entity.CharacterDescription,
+                                CharacterJob = entity.CharacterJob,
+                                Places = entity.Hangouts.Select(i => new Models.Place.PlaceCharacterDetail
+                                {
+                                    PlaceId = i.Place.PlaceId,
+                                    PlaceName = i.Place.PlaceName,
+                                }).ToList(),
+                                Items = entity.Inventory.Select(i => new ItemCharacterDetail
+                                {
+                                    ItemId = i.Item.ItemId,
+                                    ItemName = i.Item.ItemName,
+                                }).ToList(),
+                            };
+                    }
+                }
+                return null;
             }
         }
 
@@ -98,16 +96,12 @@ namespace Spongebob.Service
                 {
                     if (c.CharacterId == model.CharacterId)
                     {
-
-
-
                         var entity =
                             ctx
                             .Characters.Single(e => e.CharacterId == model.CharacterId);
                         entity.CharacterName = model.CharacterName;
                         entity.CharacterDescription = model.CharacterDescription;
                         entity.CharacterJob = model.CharacterJob;
-
                         return ctx.SaveChanges() >= 1;
                     }
                 }
@@ -122,17 +116,14 @@ namespace Spongebob.Service
                 var userCharacters = ctx.Characters.Where(e => e.UserId == _userId).ToArray();
                 foreach (var c in userCharacters)
                 {
-
                     if (c.CharacterId == characterID)
                     {
-
                         var entity =
                             ctx
                             .Characters
                             .Single(e => e.CharacterId == characterID && e.UserId == _userId);
 
                         ctx.Characters.Remove(entity);
-
                         return ctx.SaveChanges() == 1;
                     }
                 }

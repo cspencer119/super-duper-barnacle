@@ -20,13 +20,11 @@ namespace Spongebob.Service
         public bool CreatePlace(PlaceCreate model)
         {
             var entity = new Place() { UserId = _userId, PlaceName = model.PlaceName, PlaceDescription = model.PlaceDescription, Address = model.Address };
-
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Places.Add(entity);
                 return ctx.SaveChanges() >= 1;
             }
-
         }
 
         public IEnumerable<PlaceListItem> GetPlaces()
@@ -74,13 +72,10 @@ namespace Spongebob.Service
                 {
                     if (p.PlaceId == model.PlaceId)
                     {
-
                         var entity = ctx.Places.Single(e => e.PlaceId == model.PlaceId);
-
                         entity.PlaceName = model.PlaceName;
                         entity.PlaceDescription = model.PlaceDescription;
                         entity.Address = model.Address;
-
                         return ctx.SaveChanges() >= 1;
                     }
                 }
