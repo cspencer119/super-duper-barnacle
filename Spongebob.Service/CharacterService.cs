@@ -27,7 +27,9 @@ namespace Spongebob.Service
                     UserId = _userId,
                     CharacterName = model.CharacterName,
                     CharacterDescription = model.CharacterDescription,
-                    CharacterJob = model.CharacterJob
+                    CharacterJob = model.CharacterJob,
+                    IsSeedList = false
+                    
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -45,6 +47,7 @@ namespace Spongebob.Service
                     .Characters
                     .Select(e => new CharacterListItem
                     {
+                        IsSeedList = e.IsSeedList,
                         CharacterId = e.CharacterId,
                         CharacterName = e.CharacterName
                     });
@@ -66,6 +69,7 @@ namespace Spongebob.Service
                         return
                             new CharacterDetail
                             {
+                                IsSeedList = entity.IsSeedList,
                                 CharacterId = entity.CharacterId,
                                 CharacterName = entity.CharacterName,
                                 CharacterDescription = entity.CharacterDescription,

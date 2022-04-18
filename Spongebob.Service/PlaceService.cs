@@ -19,7 +19,7 @@ namespace Spongebob.Service
 
         public bool CreatePlace(PlaceCreate model)
         {
-            var entity = new Place() { UserId = _userId, PlaceName = model.PlaceName, PlaceDescription = model.PlaceDescription, Address = model.Address };
+            var entity = new Place() { IsSeedList =false, UserId = _userId, PlaceName = model.PlaceName, PlaceDescription = model.PlaceDescription, Address = model.Address };
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Places.Add(entity);
@@ -31,7 +31,7 @@ namespace Spongebob.Service
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query = ctx.Places.Select(e => new PlaceListItem { PlaceId = e.PlaceId, PlaceName = e.PlaceName });
+                var query = ctx.Places.Select(e => new PlaceListItem { IsSeedList=e.IsSeedList, PlaceId = e.PlaceId, PlaceName = e.PlaceName });
                 return query.ToArray();
             }
         }
@@ -55,7 +55,8 @@ namespace Spongebob.Service
                                 PlaceId = entity.PlaceId,
                                 PlaceName = entity.PlaceName,
                                 PlaceDescription = entity.PlaceDescription,
-                                Address = entity.Address
+                                Address = entity.Address,
+                                IsSeedList = entity.IsSeedList,
                             };
                     }
                 }

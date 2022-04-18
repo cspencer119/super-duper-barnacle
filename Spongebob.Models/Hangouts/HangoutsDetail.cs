@@ -13,5 +13,6 @@ namespace Spongebob.Models.Hangouts
         public string PlaceName { get; set; }
         public int CharacterId { get; set; }
         public string CharacterName { get; set; }
+        public bool IsSeedList { get; set; }
     }
 }
