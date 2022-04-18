@@ -20,9 +20,9 @@ namespace Spongebob.Models
         public string CharacterDescription { get; set; }
         [Display(Name = "Character Job")]
         public string CharacterJob { get; set; }
-        public bool IsSeedList { get; set; }
         public List<PlaceCharacterDetail> Places { get; set; }
         public List<ItemCharacterDetail> Items { get; set; }
+        public bool IsSeedList { get; set; }
  
     }
 }

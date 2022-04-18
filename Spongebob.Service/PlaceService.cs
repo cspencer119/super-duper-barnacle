@@ -52,11 +52,11 @@ namespace Spongebob.Service
                         return
                             new PlaceDetail
                             {
-                                IsSeedList = entity.IsSeedList,
                                 PlaceId = entity.PlaceId,
                                 PlaceName = entity.PlaceName,
                                 PlaceDescription = entity.PlaceDescription,
-                                Address = entity.Address
+                                Address = entity.Address,
+                                IsSeedList = entity.IsSeedList,
                             };
                     }
                 }

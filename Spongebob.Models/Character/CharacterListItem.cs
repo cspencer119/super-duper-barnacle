@@ -9,11 +9,11 @@ namespace Spongebob.Models
 {
     public class CharacterListItem
     {
-        public bool IsSeedList { get; set; }
         [Display(Name = "Character Id")]
         public int CharacterId { get; set; }
         [Display(Name = "Character Name")]
         public string CharacterName { get; set; }
         public override string ToString() => CharacterName;
+        public bool IsSeedList { get; set; }
     }
 }

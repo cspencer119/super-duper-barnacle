@@ -10,12 +10,12 @@ namespace Spongebob.Models
 {
     public class InventoryDetail
     {
-        public bool IsSeedList { get; set; }
         public int InventoryId { get; set; }
         public int ItemId { get; set; }
         public string Item { get; set; }
         public int CharacterId { get; set; }
 
         public string Character { get; set; }
+        public bool IsSeedList { get; set; }
     }
 }

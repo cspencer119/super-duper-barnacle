@@ -8,8 +8,8 @@ namespace Spongebob.Models
 {
     public class PlaceListItem
     {
-        public bool IsSeedList { get; set; }
         public int PlaceId { get; set; }
         public string PlaceName { get; set; }
+        public bool IsSeedList { get; set; }
     }
 }

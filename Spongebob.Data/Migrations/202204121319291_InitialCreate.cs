@@ -18,7 +18,7 @@
                     CharacterJob = c.String(nullable: false),
                     PlaceId = c.Int(),
                     InventoryId = c.Int(),
-                    IsSeedList = c.Boolean(nullable: false),
+                    
 
                 })
                 .PrimaryKey(t => t.CharacterId)
@@ -33,7 +33,7 @@
                     UserId = c.Guid(nullable: false),
                     ItemId = c.Int(nullable: false),
                     CharacterId = c.Int(nullable: false),
-                    IsSeedList = c.Boolean(nullable: false),
+                    
 
                 })
                 .PrimaryKey(t => t.InventoryId)
@@ -51,7 +51,7 @@
                     ItemName = c.String(nullable: false),
                     ItemDescription = c.String(nullable: false),
                     ItemIsCool = c.Boolean(nullable: false),
-                    IsSeedList = c.Boolean(nullable: false),
+                    
 
                 })
                 .PrimaryKey(t => t.ItemId);
@@ -65,7 +65,7 @@
                     PlaceName = c.String(nullable: false),
                     PlaceDescription = c.String(nullable: false),
                     Address = c.String(nullable: false),
-                    IsSeedList = c.Boolean(nullable: false),
+                    
 
                 })
                 .PrimaryKey(t => t.PlaceId);

@@ -8,10 +8,10 @@ namespace Spongebob.Models
 {
     public class ItemDetail
     {
-        public bool IsSeedList { get; set; }
         public int ItemId { get; set; }
         public string ItemName { get; set; }
         public string ItemDescription { get; set; }
         public bool ItemIsCool { get; set; }
+        public bool IsSeedList { get; set; }
     }
 }
