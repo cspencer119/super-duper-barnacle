@@ -35,7 +35,7 @@ https://localhost:Your#Here/swagger
 ```sh
 https://localhost:Your#Here/api/Account/Register
 ```
-3. Obtain a bearer token to have access to Posting, Deleting, and updating various parts of the api
+3. Obtain a bearer token to have access to Posting, Deleting, and Updating various parts of the api
 - Within the api you can look up and update the contents within seed list but not delete any of them
 - With the account you made you can do a full crud of the api for contents you made but not other accounts created
 - With other accounts content you can only look up and update the their contents they made but not delete any of them
