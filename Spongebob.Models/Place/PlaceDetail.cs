@@ -12,6 +12,7 @@ namespace Spongebob.Models
         public string PlaceName { get; set; }
         public string PlaceDescription { get; set; }
         public string Address { get; set; }
+        public bool IsSeedList { get; set; }
 
     }
 }

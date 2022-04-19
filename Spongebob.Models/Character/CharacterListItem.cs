@@ -14,5 +14,6 @@ namespace Spongebob.Models
         [Display(Name = "Character Name")]
         public string CharacterName { get; set; }
         public override string ToString() => CharacterName;
+        public bool IsSeedList { get; set; }
     }
 }

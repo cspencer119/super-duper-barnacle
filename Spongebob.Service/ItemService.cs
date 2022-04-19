@@ -16,17 +16,18 @@ namespace Spongebob.Service
         {
             _userId = userId;
         }
+
         public bool CreateItem(ItemCreate model)
         {
             var entity =
                 new Item()
                 {
+                    IsSeedList = false,
                     UserId = _userId,
                     ItemName = model.ItemName,
                     ItemDescription = model.ItemDescription,
                     ItemIsCool = model.ItemIsCool
                 };
-
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Items.Add(entity);
@@ -45,12 +46,12 @@ namespace Spongebob.Service
                         e =>
                         new ItemListItem
                         {
+                            IsSeedList =e.IsSeedList,
                             ItemId = e.ItemId,
                             ItemName = e.ItemName,
                             ItemDescription = e.ItemDescription,
                             ItemIsCool = e.ItemIsCool
-                        }
-                        );
+                        });
                 return query.ToArray();
             }
         }
@@ -59,18 +60,27 @@ namespace Spongebob.Service
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity =
-                    ctx
-                    .Items
-                    .Single(e => e.ItemId == id);
-                return
-                    new ItemDetail
+                var items = ctx.Items.Where(e => e.ItemId == id).ToArray();
+                foreach (var i in items)
+                {
+                    if (i.ItemId == id)
                     {
-                        ItemId = entity.ItemId,
-                        ItemName = entity.ItemName,
-                        ItemDescription = entity.ItemDescription,
-                        ItemIsCool = entity.ItemIsCool
-                    };
+                        var entity =
+                            ctx
+                            .Items
+                            .Single(e => e.ItemId == id);
+                        return
+                            new ItemDetail
+                            {
+                                IsSeedList =entity.IsSeedList,
+                                ItemId = entity.ItemId,
+                                ItemName = entity.ItemName,
+                                ItemDescription = entity.ItemDescription,
+                                ItemIsCool = entity.ItemIsCool
+                            };
+                    }
+                }
+                return null;
             }
         }
 
@@ -78,17 +88,23 @@ namespace Spongebob.Service
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity =
-                    ctx
-                    .Items
-                    .Single(e => e.ItemId == model.ItemId);
-
-                entity.ItemId = model.ItemId;
-                entity.ItemName = model.ItemName;
-                entity.ItemDescription = model.ItemDescription;
-                entity.ItemIsCool = model.ItemIsCool;
-
-                return ctx.SaveChanges() == 1;
+                var all = ctx.Items.ToArray();
+                foreach (var i in all)
+                {
+                    if (i.ItemId == model.ItemId)
+                    {
+                        var entity =
+                            ctx
+                            .Items
+                            .Single(e => e.ItemId == model.ItemId);
+                        entity.ItemId = model.ItemId;
+                        entity.ItemName = model.ItemName;
+                        entity.ItemDescription = model.ItemDescription;
+                        entity.ItemIsCool = model.ItemIsCool;
+                        return ctx.SaveChanges() == 1;
+                    }
+                }
+                return false;
             }
         }
 
@@ -101,29 +117,22 @@ namespace Spongebob.Service
                 {
                     if (i.ItemId == itemId)
                     {
-
-
-
                         var entity =
                             ctx
                             .Items
                             .Single(e => e.ItemId == itemId && e.UserId == _userId);
-
                         var inventories = ctx.Inventories.Where(e => e.UserId == _userId);
                         foreach (var inventory in inventories)
                         {
                             if (inventory.ItemId == itemId)
                                 ctx.Inventories.Remove(inventory);
                         }
-
                         ctx.Items.Remove(entity);
-
                         return ctx.SaveChanges() >= 1;
                     }
                 }
                 return false;
             }
         }
-
     }
 }

@@ -16,6 +16,8 @@ namespace Spongebob.Data
         [Required]
         public Guid UserId { get; set; }
 
+        public bool IsSeedList { get; set; }
+
         [Required]
         public int ItemId { get; set; }
 

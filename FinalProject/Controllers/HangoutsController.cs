@@ -12,7 +12,6 @@ using System.Web.Http;
 
 namespace FinalProject.Controllers
 {
-    
     public class HangoutsController : ApiController
     {
         public IHttpActionResult Get()
@@ -21,24 +20,24 @@ namespace FinalProject.Controllers
             var hangouts = iService.GetHangouts();
             return Ok(hangouts);
         }
+
         [Authorize]
         public IHttpActionResult Post(HangoutsCreate model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-
             var service = CreateHangoutsServiceUserId();
-
             if (!service.CreateHangouts(model))
-                return InternalServerError();
-
-            return Ok();
+                return BadRequest("An Id you provided doesn't exist");
+            return Ok("Hangout has been created!");
         }
 
         public IHttpActionResult Get(int id)
         {
             var iService = CreateHangoutsService();
             var hangouts = iService.GetHangoutsById(id);
+            if (hangouts == null)
+                return BadRequest("That hangout Id doesn't exist!");
             return Ok(hangouts);
         }
 
@@ -46,28 +45,21 @@ namespace FinalProject.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-
             var iService = CreateHangoutsService();
-
             if (!iService.UpdateHangouts(hangouts))
-                return InternalServerError();
-
-            return Ok();
+                return BadRequest("Nothing to update! Either the ID you provided does not exist or this inventory is already updated with that information.");
+            return Ok($"You have sucessfully updated hangout {hangouts.HangoutsId}!");
 
         }
+
         [Authorize]
         public IHttpActionResult Delete(int id)
         {
             var iService = CreateHangoutsServiceUserId();
-
             if (!iService.DeleteHangouts(id))
-                return BadRequest("You do not have access to delete Hangouts in Seed list!");
-
-            return Ok();
-
+                return BadRequest("You can only delete Hangouts that you have created. This Hangout either does not exist or was not created by you!");
+            return Ok("You have deleted the hangout!");
         }
-
-
 
         private HangoutsService CreateHangoutsService()
         {
@@ -81,7 +73,5 @@ namespace FinalProject.Controllers
             var hangoutsService = new HangoutsService(userId);
             return hangoutsService;
         }
-
-
     }
 }

@@ -16,5 +16,6 @@ namespace Spongebob.Models
         public int CharacterId { get; set; }
 
         public string Character { get; set; }
+        public bool IsSeedList { get; set; }
     }
 }
