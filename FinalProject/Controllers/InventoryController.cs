@@ -45,9 +45,7 @@ namespace FinalProject.Controllers
                 return BadRequest(ModelState);
             var iService = CreateInventoryService();
             if (!iService.UpdateInventory(inventory))
-
                 return BadRequest("Nothing to update! Either the ID you provided does not exist or this inventory is already updated with that information.");
-
             return Ok($"You have sucussfully updated inventory {inventory.InventoryId}!");
 
         }

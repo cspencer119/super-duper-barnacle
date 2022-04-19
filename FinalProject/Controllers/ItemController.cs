@@ -53,7 +53,6 @@ namespace FinalProject.Controllers
         public IHttpActionResult Delete(int id)
         {
             var iService = CreateItemServiceUserId();
-
             if (!iService.DeleteItem(id))
                 return BadRequest("You can only delete Items that you have created. This Item either does not exist or was not created by you!");
             return Ok("You have successfully deleted the item!");
