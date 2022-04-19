@@ -1,10 +1,10 @@
 # SPONGEBOB API README
 
 SpongebobAPI is an api that allows you to create, look up, update, and delete
-various characters, places, and items within the world of bikini bottom.
+various characters, places, and items within the world of Bikini Bottom.
 
 ## Features
-- Full crud of Characters, Items, and Places
+- Full CRUD of Characters, Items, and Places
 - Able to assign items to inventories and attribute those inventories to a specific character
 - Able to have a character have a collection of places that they would hang out in
 - Contains seeded content of some known characters, items, and places in bikini bottom on the api
