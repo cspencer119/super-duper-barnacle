@@ -45,7 +45,7 @@ namespace FinalProject.Controllers
                 return BadRequest(ModelState);
             var iService = CreateItemService();
             if (!iService.EditItem(items))          
-                return BadRequest("That Item Id doesn't exist!");          
+                return BadRequest("Nothing to update! Either the ID you provided does not exist or this item is already updated with that information.");          
             return Ok($"You edited item {items.ItemId}!");
         }
 

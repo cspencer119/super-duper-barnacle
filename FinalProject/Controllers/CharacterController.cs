@@ -58,7 +58,7 @@ namespace FinalProject.Controllers
                 return BadRequest(ModelState);
             var cService = CreateCharacterService();
             if (!cService.UpdateCharacter(character))
-                return BadRequest("The CharacterId you provided does not exist");
+                return BadRequest("Nothing to update! Either the ID you provided does not exist or this character is already updated with that information.");
             return Ok($"You have edited character {character.CharacterId}!");
         }
 

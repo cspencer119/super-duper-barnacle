@@ -47,7 +47,7 @@ namespace FinalProject.Controllers
                 return BadRequest(ModelState);
             var iService = CreateHangoutsService();
             if (!iService.UpdateHangouts(hangouts))
-                return BadRequest("Nothing to update! Either the ID you provided does not exist or this inventory is already updated with that information.");
+                return BadRequest("Nothing to update! Either the ID you provided does not exist or this hangout is already updated with that information.");
             return Ok($"You have sucessfully updated hangout {hangouts.HangoutsId}!");
 
         }

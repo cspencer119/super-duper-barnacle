@@ -45,7 +45,7 @@ namespace FinalProject.Controllers
                 return BadRequest(ModelState);
             var pService = CreatePlaceService();
             if (!pService.UpdatePlace(place))          
-                return BadRequest("That Place Id doesn't exist!");
+                return BadRequest("Nothing to update! Either the ID you provided does not exist or this place is already updated with that information.");
             return Ok($"You edited place {place.PlaceId}!");          
         }
 
